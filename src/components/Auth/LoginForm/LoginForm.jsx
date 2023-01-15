@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from "./LoginForm.module.scss";
 import { TextField, Button } from '@mui/material';
-import { useLogin } from '../../hooks/useLogin';
-import { textFieldStyleProps, textFieldErrorStyleProps } from '../../mockups/textFieldProps';
+import { useLogin } from '../../../hooks/useLogin';
+import { textFieldStyleProps, textFieldErrorStyleProps } from '../../../mockups/textFieldProps';
 
 const LoginForm = () => {
 
@@ -44,7 +44,7 @@ const LoginForm = () => {
                     error={passwordErrors}
                     helperText={
                         ((password.isDirty && password.isEmpty) && 'Поле не может быть пустым') ||
-                        ((password.isDirty && password.minLengthError) && 'Поле не может быть короче 3 символов') ||
+                        ((password.isDirty && password.minLengthError) && 'Поле не может быть короче 5 символов') ||
                         ((password.isDirty && password.maxLengthError) && 'Поле не может быть длиннее 8 символов')
                     }
                 />
