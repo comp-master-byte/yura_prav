@@ -1,13 +1,12 @@
 import React from "react";
+import AppRouter from "./router/AppRouter";
 import "./styles/main.scss";
-import {Routes, Route} from "react-router-dom";
-import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
     return (
-        <Routes> 
-            <Route path="/login" element={<LoginPage />} />
-        </Routes>
+        <div>
+            <AppRouter />
+        </div>
     )
 }
 

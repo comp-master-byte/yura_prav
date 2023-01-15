@@ -6,7 +6,7 @@ import { textFieldStyleProps, textFieldErrorStyleProps } from '../../mockups/tex
 
 const LoginForm = () => {
 
-    const { email, password, emailErrors, passwordErrors } = useLogin();
+    const { email, password, emailErrors, passwordErrors, toSignUpPage } = useLogin();
 
     return (
         <div className={styles.loginFormWrapper}>
@@ -58,10 +58,17 @@ const LoginForm = () => {
                     </Button>
                 </div>
                 <div className={styles.loginAndRegBtns}>
-                    <Button disabled={!email.isInputValid || !password.isInputValid} variant="contained" className={styles.enterBtn}>Войти</Button>
+                    <Button
+                        disabled={!email.isInputValid || !password.isInputValid}
+                        variant="contained"
+                        className={styles.enterBtn}
+                    >
+                        Войти
+                    </Button>
                     <Button
                         variant="text"
                         className={styles.textBtn}
+                        onClick={toSignUpPage}
                         disableRipple
                     >
                         Зарегестрироваться
