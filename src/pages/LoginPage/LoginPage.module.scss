@@ -1,0 +1,37 @@
+.loginWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.loginContent {
+    width: 800px;
+    height: 430px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #000;
+    display: flex;
+    overflow: hidden;
+
+    .leftColumnContent {
+        flex-basis: 50%;
+        background-image: url("../../images/logo.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .rightColumnContent {
+        flex-basis: 50%;
+        padding-top: 50px;
+        text-align: center;
+    }
+}
+
+// @media screen and (min-width: 1441px) {
+//     .loginContent {
+//         transform: scale(1.3);
+//     }
+// }
