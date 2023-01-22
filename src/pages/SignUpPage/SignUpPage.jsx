@@ -8,7 +8,6 @@ import UIInputMask from "../../UI/UIInputMask";
 
 const SignUpPage = () => {
     const {register, handleSubmit, onSubmit, errors, control, setSelectGender, selectGender} = useSignup();
-
     return (
         <div className={styles.signupPage}>
             <span className={styles.title}>Регистрация</span>
@@ -87,7 +86,7 @@ const SignUpPage = () => {
                                 type="checkbox" 
                                 id="male" 
                                 onChange={() => setSelectGender('м')}
-                                checked={selectGender === 'ж' ? false : true}
+                                checked={(selectGender === 'ж' || !selectGender) ? false : true}
                             />
                             <label htmlFor="male" className={styles.text}>Мужчина</label>
                         </div>
@@ -96,7 +95,7 @@ const SignUpPage = () => {
                                 type="checkbox"
                                 id="female"
                                 onChange={() => setSelectGender('ж')}
-                                checked={selectGender === 'м' ? false : true}
+                                checked={(selectGender === 'м' || !selectGender) ? false : true}
                             />
                             <label htmlFor="female" className={styles.text}>Женщина</label>
                         </div>
