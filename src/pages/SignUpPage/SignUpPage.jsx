@@ -1,22 +1,118 @@
 import React from "react";
-import styles from "./SignUpPage.module.scss";
-import SignUpForm from "../../components/Auth/SignUpForm/SignUpForm";
+import styles from "../../styles/auth.module.scss";
+import {Link} from "react-router-dom"
+import { useSignup } from "../../hooks/useSignup";
+import { EMAIL_REGEX } from "../../utils/regexExp";
+import UIInput from "../../UI/UIInput";
+import UIInputMask from "../../UI/UIInputMask";
 
 const SignUpPage = () => {
+    const {register, handleSubmit, onSubmit, errors, control, setSelectGender, selectGender} = useSignup();
+
     return (
-        <section className={styles.signUpWrapper}>
-            <header className={styles.signUpHeader}>
-                <div className={styles.container}>
-                    <h1>Регистрация</h1>
-                    <p>*Пожалуйста заполните все необходимые поля, чтобы создать аккаунт!</p>
+        <div className={styles.signupPage}>
+            <span className={styles.title}>Регистрация</span>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <UIInput 
+                    name="first_name"
+                    placeholder="Введите ваше имя"
+                    register={register}
+                    error={errors.first_name}
+                    iconClassName={`uil uil-user ${styles.icon}`}
+                    validation={{
+                        required: 'Это поле обязательное!'
+                    }}
+                />
+                <UIInput 
+                    name="last_name"
+                    placeholder="Введите вашу фамилию"
+                    register={register}
+                    error={errors.last_name}
+                    iconClassName={`uil uil-user ${styles.icon}`}
+                    validation={{
+                        required: 'Это поле обязательное!'
+                    }}
+                />
+                <UIInput 
+                    name="email"
+                    placeholder="Введите ваш E-mail"
+                    register={register}
+                    error={errors.email}
+                    iconClassName={`uil uil-envelope ${styles.icon}`}
+                    validation={{
+                        required: 'Это поле обязательное',
+                        pattern: {
+                            value: EMAIL_REGEX,
+                            message: 'E-mail введён некорректно'
+                        }
+                    }}
+                />
+                <UIInputMask 
+                    name="birthday"
+                    placeholder="Введите вашу дату рождения: дд.мм.гггг"
+                    mask="99.99.9999"
+                    control={control}
+                    iconClassName={`uil uil-calender ${styles.icon}`}
+                />
+                <UIInput 
+                    name="password"
+                    type="password"
+                    placeholder="Введите ваш пароль"
+                    register={register}
+                    error={errors.password}
+                    iconClassName={`uil uil-lock ${styles.icon}`}
+                    extraIconClassName={`uil uil-eye-slash ${styles.showHidePw}`}
+                    validation={{
+                        required: 'Это поле обязательное',
+                    }}
+                />
+                <div className={styles.checkboxText}>
+                    <div className={styles.checkboxContent}>
+                        <input 
+                            type="checkbox" 
+                            id="logCheck" 
+                            {...register('is_lawer', {
+                                required: 'Это поле обязательное'
+                            })}
+                        />
+                        <label htmlFor="logCheck" className={styles.text}>Вы являетесь юристом?</label>
+                    </div>
                 </div>
-            </header>
-            <main className={styles.signUpContent}>
-                <div className={styles.container}>
-                    <SignUpForm />
+
+                <div className={styles.genderText}>
+                    <div className={styles.genderTitle}>Укажите ваш пол:</div>
+                    <div className={styles.genderContent}>
+                        <div className={styles.checkboxContent}>
+                            <input 
+                                type="checkbox" 
+                                id="male" 
+                                onChange={() => setSelectGender('м')}
+                                checked={selectGender === 'ж' ? false : true}
+                            />
+                            <label htmlFor="male" className={styles.text}>Мужчина</label>
+                        </div>
+                        <div className={styles.checkboxContent}>
+                            <input 
+                                type="checkbox"
+                                id="female"
+                                onChange={() => setSelectGender('ж')}
+                                checked={selectGender === 'м' ? false : true}
+                            />
+                            <label htmlFor="female" className={styles.text}>Женщина</label>
+                        </div>
+                    </div>
                 </div>
-            </main>
-        </section>
+
+                <div className={`${styles.inputField} ${styles.button}`}>
+                    <button>Зарегестрироваться</button>
+                </div>
+            </form>
+            
+            <div className={styles.loginSignup}>
+                <span className={styles.text}>Уже есть аккаунт?</span>
+                <Link to="/login" className={`${styles.text} ${styles.signupText}`}>Войдите сейчас</Link>
+            </div>
+        </div>
     )
 }
 

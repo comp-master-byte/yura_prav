@@ -1,16 +1,62 @@
 import React from 'react';
-import styles from "./LoginPage.module.scss";
-import LoginForm from '../../components/Auth/LoginForm/LoginForm';
+import styles from "../../styles/auth.module.scss";
+import {Link} from "react-router-dom";
+import UIInput from '../../UI/UIInput';
+import { useLogin } from '../../hooks/useLogin';
+import { EMAIL_REGEX } from '../../utils/regexExp';
 
 const LoginPage = () => {
+    const {register, handleSubmit, onSubmit, errors} = useLogin();
+
     return (
-        <section className={styles.loginContent}>
-            <div className={styles.leftColumnContent}></div>
-            <div className={styles.rightColumnContent}>
-                <LoginForm />
+        <div className={styles.loginPage}>
+            <span className={styles.title}>Вход</span>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <UIInput 
+                    name="email"
+                    placeholder="Введите ваш E-mail"
+                    register={register}
+                    error={errors.email}
+                    iconClassName={`uil uil-envelope ${styles.icon}`}
+                    validation={{
+                        required: 'Это поле обязательное',
+                        pattern: {
+                            value: EMAIL_REGEX,
+                            message: 'E-mail введён некорректно'
+                        }
+                    }}
+                />
+                <UIInput 
+                    name="password"
+                    type="password"
+                    placeholder="Введите ваш пароль"
+                    register={register}
+                    error={errors.password}
+                    iconClassName={`uil uil-lock ${styles.icon}`}
+                    extraIconClassName={`uil uil-eye-slash ${styles.showHidePw}`}
+                    validation={{
+                        required: 'Это поле обязательное',
+                    }}
+                />
+                <div className={styles.checkboxText}>
+                    <div className={styles.checkboxContent}>
+                        <input type="checkbox" id="logCheck" />
+                        <label htmlFor="logCheck" className={styles.text}>Запомнить меня</label>
+                    </div>
+                    <a href="#" className={styles.text}>Забыли пароль?</a>
+                </div>
+
+                <div className={`${styles.inputField} ${styles.button}`}>
+                    <button>Войти</button>
+                </div>
+            </form>
+            
+            <div className={styles.loginSignup}>
+                <span className={styles.text}>Нет аккаунта?</span>
+                <Link to="/signup" className={`${styles.text} ${styles.signupText}`}>Зарегестрируйтесь сейчас</Link>
             </div>
-        </section>
+        </div>
     )
 }
 
-export default LoginPage
+export default LoginPage;

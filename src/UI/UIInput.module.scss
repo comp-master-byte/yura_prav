@@ -1,0 +1,77 @@
+.inputField {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+
+    input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        padding: 0 35px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        border-bottom: 2px solid #ccc;
+        border-top: 2px solid transparent;
+        transition: all .2s ease;
+    }
+
+    
+
+    i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 23px;
+        transition: all .2s ease;
+    }
+
+    i.icon {
+        left: 0;
+    }
+
+    i.showHidePw {
+        right: 0;
+        cursor: pointer;
+    }
+}
+
+// Valid
+
+.validInputField {
+    input:is(:focus) {
+        border-bottom-color: #003878;
+    }
+
+    input:is(:focus)::placeholder {
+        color: #003878;
+    }
+
+    input:is(:focus) ~ i {
+        color: #003878;
+    }
+}
+
+// Error
+
+.errorInputField {
+    i, 
+    input,
+    input::placeholder {
+        color: #E36060;
+    }
+
+    input {
+        border-bottom-color: #E36060;
+    }
+    .errorMessage {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        font-size: 12px;
+        margin-top: 5px;
+        color: #E36060;
+    }
+}

@@ -1,22 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { useInput } from "./useInput";
+import { useForm } from "react-hook-form"
 
 export const useLogin = () => {
-    const navigate = useNavigate();
+    const {register, handleSubmit, formState: {errors}} = useForm();
 
-    const email = useInput('', {isEmpty: true, isEmail: true, minLength: 3});
-    const password = useInput('', {isEmpty: true, minLength: 5, maxLength: 8});
-
-    const emailErrors = (email.isDirty && email.isEmpty) || (email.isDirty && email.minLengthError) || (email.isDirty && email.emailError);
-    const passwordErrors = (password.isDirty && password.isEmpty) || (password.isDirty && password.minLengthError) || (password.isDirty && password.maxLengthError);
-
-    const toSignUpPage = () => navigate('/signup');
+    const onSubmit = (data) => {
+        console.log(data);
+    }
 
     return {
-        email,
-        password,
-        emailErrors,
-        passwordErrors,
-        toSignUpPage
+        register, 
+        handleSubmit,
+        errors,
+        onSubmit
     }
 }

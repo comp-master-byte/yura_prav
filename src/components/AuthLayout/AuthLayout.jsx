@@ -5,7 +5,11 @@ import { Outlet } from "react-router-dom";
 const AuthLayout = () => {
     return (
         <div className={styles.authWrapper}>
-            <Outlet />
+            <div className={styles.container}>
+                <div className={styles.form}>
+                    <Outlet />
+                </div>
+            </div>
         </div>
     )
 }

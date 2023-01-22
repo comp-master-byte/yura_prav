@@ -1,0 +1,153 @@
+.title {
+    font-size: 27px;
+    font-weight: 600;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background-color: #003878;
+        border-radius: 25px;
+    }
+}
+
+.inputField {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+
+    input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        padding: 0 35px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        border-bottom: 2px solid #ccc;
+        border-top: 2px solid transparent;
+        transition: all .2s ease;
+    }
+
+    input:is(:focus) {
+        border-bottom-color: #003878;
+    }
+
+    i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        font-size: 23px;
+        transition: all .2s ease;
+    }
+
+    i.icon {
+        left: 0;
+    }
+
+    i.showHidePw {
+        right: 0;
+        cursor: pointer;
+    }
+
+    input:is(:focus) ~ i {
+        color: #003878;
+    }
+}
+
+.checkboxText {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+
+    .checkboxContent {
+        display: flex;
+        align-items: center;
+
+        input {
+            margin: 0 8px 0 4px;
+            accent-color: #003878;
+        }
+    }
+}
+
+.genderText {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    
+    .genderTitle {
+        margin-right: 20px;
+        color: #333;
+        font-size: 14px;
+    }
+
+    .genderContent {
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+
+        .checkboxContent {
+            display: flex;
+            align-items: center;
+
+            input {
+                margin: 0 8px 0 4px;
+                accent-color: #003878;
+            }
+        }
+    }
+}
+
+.button {
+    margin-top: 35px;
+
+    button {
+        border: none;
+        color: #fff;
+        letter-spacing: 1px;
+        font-size: 17px;
+        font-weight: 500;
+        border-radius: 6px;
+        background-color: #003878;
+        cursor: pointer;
+        transition: all .25s;
+        width: 100%;
+        height: 100%;
+
+        &:hover {
+            background-color: #111171;
+            transition: all .25s;
+        }
+    }
+}
+
+.loginSignup {
+    margin-top: 30px;
+    text-align: center;
+
+    span.text {
+        margin-right: 5px;
+    }
+}
+
+.text {
+    color: #333;
+    font-size: 14px;
+}
+
+a.text {
+    color: #003878;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
