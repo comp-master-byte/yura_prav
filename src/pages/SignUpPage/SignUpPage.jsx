@@ -63,6 +63,14 @@ const SignUpPage = () => {
                     extraIconClassName={`uil uil-eye-slash ${styles.showHidePw}`}
                     validation={{
                         required: 'Это поле обязательное',
+                        minLength: {
+                            value: 5,
+                            message: 'Минимальное кол-во символов 5.'
+                        },
+                        maxLength: {
+                            value: 16,
+                            message: 'Максимальное кол-во символов 16.'
+                        }
                     }}
                 />
                 <div className={styles.checkboxText}>
