@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import UIInput from '../../UI/UIInput';
 import { useLogin } from '../../hooks/useLogin';
 import { EMAIL_REGEX } from '../../utils/regexExp';
+import classNames from "classnames";
 
 const LoginPage = () => {
     const {register, handleSubmit, onSubmit, errors} = useLogin();
@@ -36,6 +37,14 @@ const LoginPage = () => {
                     extraIconClassName={`uil uil-eye-slash ${styles.showHidePw}`}
                     validation={{
                         required: 'Это поле обязательное',
+                        minLength: {
+                            value: 5,
+                            message: 'Минимальное кол-во символов 5.'
+                        },
+                        maxLength: {
+                            value: 16,
+                            message: 'Максимальное кол-во символов 16.'
+                        }
                     }}
                 />
                 <div className={styles.checkboxText}>
@@ -46,8 +55,8 @@ const LoginPage = () => {
                     <a href="#" className={styles.text}>Забыли пароль?</a>
                 </div>
 
-                <div className={`${styles.inputField} ${styles.button}`}>
-                    <button>Войти</button>
+                <div className={classNames(styles.inputField, styles.button)}>
+                    <button disabled={Object.keys(errors).length > 0}>Войти</button>
                 </div>
             </form>
             

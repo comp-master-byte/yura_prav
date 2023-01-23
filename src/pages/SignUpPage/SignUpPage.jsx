@@ -5,9 +5,11 @@ import { useSignup } from "../../hooks/useSignup";
 import { EMAIL_REGEX } from "../../utils/regexExp";
 import UIInput from "../../UI/UIInput";
 import UIInputMask from "../../UI/UIInputMask";
+import classNames from "classnames";
 
 const SignUpPage = () => {
     const {register, handleSubmit, onSubmit, errors, control, setSelectGender, selectGender} = useSignup();
+
     return (
         <div className={styles.signupPage}>
             <span className={styles.title}>Регистрация</span>
@@ -110,8 +112,8 @@ const SignUpPage = () => {
                     </div>
                 </div>
 
-                <div className={`${styles.inputField} ${styles.button}`}>
-                    <button>Зарегестрироваться</button>
+                <div className={classNames(styles.inputField, styles.button)}>
+                    <button disabled={Object.keys(errors).length > 0}>Зарегестрироваться</button>
                 </div>
             </form>
             

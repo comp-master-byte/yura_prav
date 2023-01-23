@@ -127,7 +127,12 @@
             transition: all .25s;
         }
     }
+
+    button:disabled {
+        background-color: grey;
+    }
 }
+
 
 .loginSignup {
     margin-top: 30px;
