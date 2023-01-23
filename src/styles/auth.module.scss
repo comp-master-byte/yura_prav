@@ -138,12 +138,18 @@
 .disabledBtn {
     button {
         background-color: grey;
+        &:hover {
+            background-color: grey;
+        }
     }
 }
 
 .loadingBtn {
     button {
         opacity: .6;
+        &:hover {
+            background-color: #003878;
+        }
     }
 }
 
