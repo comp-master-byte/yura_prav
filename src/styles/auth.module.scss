@@ -106,6 +106,12 @@
     }
 }
 
+.genderError {
+    .genderTitle {
+        color: red;
+    }
+}
+
 .button {
     margin-top: 35px;
 
@@ -127,9 +133,17 @@
             transition: all .25s;
         }
     }
+}
 
-    button:disabled {
+.disabledBtn {
+    button {
         background-color: grey;
+    }
+}
+
+.loadingBtn {
+    button {
+        opacity: .6;
     }
 }
 

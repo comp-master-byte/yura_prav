@@ -38,12 +38,12 @@ const LoginPage = () => {
                     validation={{
                         required: 'Это поле обязательное',
                         minLength: {
-                            value: 5,
-                            message: 'Минимальное кол-во символов 5.'
+                            value: 8,
+                            message: 'Минимальное кол-во символов 8.'
                         },
                         maxLength: {
-                            value: 16,
-                            message: 'Максимальное кол-во символов 16.'
+                            value: 32,
+                            message: 'Максимальное кол-во символов 32.'
                         }
                     }}
                 />

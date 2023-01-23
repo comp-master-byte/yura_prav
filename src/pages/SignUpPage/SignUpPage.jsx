@@ -6,17 +6,29 @@ import { EMAIL_REGEX } from "../../utils/regexExp";
 import UIInput from "../../UI/UIInput";
 import UIInputMask from "../../UI/UIInputMask";
 import classNames from "classnames";
+import { ToastContainer } from "react-toastify";
 
 const SignUpPage = () => {
-    const {register, handleSubmit, onSubmit, errors, control, setSelectGender, selectGender} = useSignup();
+    const {
+        register, 
+        handleSubmit, 
+        onSubmit, 
+        errors, 
+        control, 
+        setSelectGender, 
+        selectGender,
+        isLoading,
+        registerBtnText
+    } = useSignup();
 
     return (
         <div className={styles.signupPage}>
+            <ToastContainer />
             <span className={styles.title}>Регистрация</span>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <UIInput 
                     name="first_name"
-                    placeholder="Введите ваше имя"
+                    placeholder="Введите ваше имя*"
                     register={register}
                     error={errors.first_name}
                     iconClassName={`uil uil-user ${styles.icon}`}
@@ -26,7 +38,7 @@ const SignUpPage = () => {
                 />
                 <UIInput 
                     name="last_name"
-                    placeholder="Введите вашу фамилию"
+                    placeholder="Введите вашу фамилию*"
                     register={register}
                     error={errors.last_name}
                     iconClassName={`uil uil-user ${styles.icon}`}
@@ -36,7 +48,7 @@ const SignUpPage = () => {
                 />
                 <UIInput 
                     name="email"
-                    placeholder="Введите ваш E-mail"
+                    placeholder="Введите ваш E-mail*"
                     register={register}
                     error={errors.email}
                     iconClassName={`uil uil-envelope ${styles.icon}`}
@@ -58,7 +70,7 @@ const SignUpPage = () => {
                 <UIInput 
                     name="password"
                     type="password"
-                    placeholder="Введите ваш пароль"
+                    placeholder="Введите ваш пароль*"
                     register={register}
                     error={errors.password}
                     iconClassName={`uil uil-lock ${styles.icon}`}
@@ -66,12 +78,12 @@ const SignUpPage = () => {
                     validation={{
                         required: 'Это поле обязательное',
                         minLength: {
-                            value: 5,
-                            message: 'Минимальное кол-во символов 5.'
+                            value: 8,
+                            message: 'Минимальное кол-во символов 8.'
                         },
                         maxLength: {
-                            value: 16,
-                            message: 'Максимальное кол-во символов 16.'
+                            value: 32,
+                            message: 'Максимальное кол-во символов 32.'
                         }
                     }}
                 />
@@ -80,16 +92,14 @@ const SignUpPage = () => {
                         <input 
                             type="checkbox" 
                             id="logCheck" 
-                            {...register('is_lawer', {
-                                required: 'Это поле обязательное'
-                            })}
+                            {...register('is_lawer')}
                         />
                         <label htmlFor="logCheck" className={styles.text}>Вы являетесь юристом?</label>
                     </div>
                 </div>
-
-                <div className={styles.genderText}>
-                    <div className={styles.genderTitle}>Укажите ваш пол:</div>
+                
+                <div className={classNames(styles.genderText)}>
+                    <div className={styles.genderTitle}>Укажите ваш пол*</div>
                     <div className={styles.genderContent}>
                         <div className={styles.checkboxContent}>
                             <input 
@@ -112,8 +122,11 @@ const SignUpPage = () => {
                     </div>
                 </div>
 
-                <div className={classNames(styles.inputField, styles.button)}>
-                    <button disabled={Object.keys(errors).length > 0}>Зарегестрироваться</button>
+                <div className={classNames(styles.inputField, styles.button, {
+                    [styles.disabledBtn]: Object.keys(errors).length > 0,
+                    [styles.loadingBtn]: isLoading
+                })}>
+                    <button disabled={Object.keys(errors).length > 0||isLoading}>{registerBtnText}</button>
                 </div>
             </form>
             
