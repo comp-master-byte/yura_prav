@@ -31,14 +31,10 @@ export default class Store {
     async login(loginData) {
         try {
             const response = await AuthService.login(loginData);
-            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('token', response.data.auth_token);
             this.setAuth(true);
-            this.setUser(response.data.user);
         } catch(e) {
-            toast(e.response.data.message, {
-                type: 'error',
-                position: 'top-right'
-            })
+            console.log(e);
         }
     }
 

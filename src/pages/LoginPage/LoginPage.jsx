@@ -7,7 +7,7 @@ import { EMAIL_REGEX } from '../../utils/regexExp';
 import classNames from "classnames";
 
 const LoginPage = () => {
-    const {register, handleSubmit, onSubmit, errors} = useLogin();
+    const {register, handleSubmit, onSubmit, errors, store} = useLogin();
 
     return (
         <div className={styles.loginPage}>

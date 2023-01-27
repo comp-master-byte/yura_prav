@@ -19,10 +19,7 @@ export const useSignup = () => {
             gender: selectGender,
             username: 'user'
         }
-        await store.registration(dataToSubmit);
-        if(Object.keys(store.user).length) {
-            setTimeout(() => navigate('/login'), 2000);
-        }
+        await store.registration(dataToSubmit, setTimeout(() => navigate('/login'), 2000));
     }
 
     return {
