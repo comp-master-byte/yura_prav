@@ -7,8 +7,9 @@ import UIInput from "../../UI/UIInput";
 import UIInputMask from "../../UI/UIInputMask";
 import classNames from "classnames";
 import { ToastContainer } from "react-toastify";
+import { observer } from 'mobx-react-lite';
 
-const SignUpPage = () => {
+const SignUpPage = observer(() => {
     const {
         register, 
         handleSubmit, 
@@ -17,8 +18,7 @@ const SignUpPage = () => {
         control, 
         setSelectGender, 
         selectGender,
-        isLoading,
-        registerBtnText
+        store
     } = useSignup();
 
     return (
@@ -124,9 +124,9 @@ const SignUpPage = () => {
 
                 <div className={classNames(styles.inputField, styles.button, {
                     [styles.disabledBtn]: Object.keys(errors).length > 0,
-                    [styles.loadingBtn]: isLoading
+                    [styles.loadingBtn]: store.isLoading
                 })}>
-                    <button disabled={Object.keys(errors).length > 0||isLoading}>{registerBtnText}</button>
+                    <button disabled={Object.keys(errors).length > 0||store.isLoading}>{store.registerBtnText}</button>
                 </div>
             </form>
             
@@ -136,6 +136,6 @@ const SignUpPage = () => {
             </div>
         </div>
     )
-}
+})
 
 export default SignUpPage;
