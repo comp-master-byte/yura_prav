@@ -5,10 +5,11 @@ import UIInput from '../../UI/UIInput';
 import { useLogin } from '../../hooks/useLogin';
 import { EMAIL_REGEX } from '../../utils/regexExp';
 import classNames from "classnames";
+import {observer} from "mobx-react-lite";
 
 const LoginPage = () => {
     const {register, handleSubmit, onSubmit, errors, store, toAccountPage} = useLogin();
-    
+
     if(store.isAuth) {
         return (
             <div className={styles.isAuthInner}>
@@ -79,4 +80,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage;
+export default observer(LoginPage);
