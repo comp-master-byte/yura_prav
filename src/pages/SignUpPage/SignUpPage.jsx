@@ -9,7 +9,7 @@ import classNames from "classnames";
 import { ToastContainer } from "react-toastify";
 import { observer } from 'mobx-react-lite';
 
-const SignUpPage = observer(() => {
+const SignUpPage = () => {
     const {
         register, 
         handleSubmit, 
@@ -136,6 +136,5 @@ const SignUpPage = observer(() => {
             </div>
         </div>
     )
-})
-
-export default SignUpPage;
+}
+export default observer(SignUpPage);

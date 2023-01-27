@@ -14,10 +14,6 @@ export const useLogin = () => {
         store.login(data, toAccountPage);
     }
 
-    useEffect(() => {
-        store.checkAuth();
-    }, [])
-
     return {
         register, 
         handleSubmit,
