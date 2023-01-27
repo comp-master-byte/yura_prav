@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
+import {useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { Context } from "../index";
-import {useNavigate} from "react-router-dom";
 
 export const useLogin = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();

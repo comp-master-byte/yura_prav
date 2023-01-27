@@ -1,21 +1,33 @@
 import React from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import AuthLayout from "../components/AuthLayout/AuthLayout";
-import AccountPage from "../pages/AccountPage/AccountPage";
+import { privateRoutes, publicRoutes } from "./index";
+import {observer} from "mobx-react-lite"
+import LoginPage from "../pages/LoginPage/LoginPage";
 
-const AppRouter = () => {   
+const AppRouter = ({store}) => { 
     return (
-        <Routes> 
-            <Route path="/lk/account" element={<AccountPage />} />
-            <Route path="/" element={<AuthLayout />}>
-                <Route path="login" element={<LoginPage />} />
-                <Route path="signup" element={<SignUpPage />} />
-                <Route path="*" element={<Navigate to="/login" replace />} /> {/* replace - чтобы почистить историю браузера */}
-            </Route>
-        </Routes>
+        store.isAuth 
+        ?
+            <Routes>
+                {privateRoutes.map(route => 
+                    <Route key={route.path} path={route.path} element={route.component} />
+                )}
+                <Route path="/" element={<AuthLayout />}> {/* Тут также можно переходить на страницу логина, но содержимое будет другое */}
+                    <Route path="login" element={<LoginPage />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/lk/account" replace />} /> {/* replace - чтобы почистить историю браузера */}
+            </Routes>
+        :
+            <Routes>
+                <Route path="/" element={<AuthLayout />}>
+                    {publicRoutes.map(route => 
+                        <Route key={route.path} path={route.path} element={route.component} />    
+                    )}
+                </Route>
+                <Route path="*" element={<Navigate to="/login" replace />} /> {/*  replace - чтобы почистить историю браузера */}
+            </Routes>
     )
 }
 
-export default AppRouter;
+export default observer(AppRouter);

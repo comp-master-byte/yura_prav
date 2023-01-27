@@ -1,9 +1,7 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import { useContext } from "react";
 import {Context} from "../index"
-import { useEffect } from "react";
 
 export const useSignup = () => {
     const {register, handleSubmit, formState: {errors}, control} = useForm({mode: 'all'});
@@ -24,7 +22,6 @@ export const useSignup = () => {
     }
 
     useEffect(() => {
-        console.log(store.isAuth);
         if(store.isAuth) {
             navigate('/login');
         }

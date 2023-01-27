@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from "react";
-import { Context } from ".";
+import { Context } from "./index";
 import AppRouter from "./router/AppRouter";
 import "./styles/main.scss";
 
@@ -9,10 +9,10 @@ const App = () => {
     useEffect(() => {
         store.checkAuth();
     }, [])
-    
+
     return (
         <div>
-            <AppRouter />
+            <AppRouter store={store} />
         </div>
     )
 }
