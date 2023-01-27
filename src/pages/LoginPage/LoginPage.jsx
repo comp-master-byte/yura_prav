@@ -8,18 +8,7 @@ import classNames from "classnames";
 import {observer} from "mobx-react-lite";
 
 const LoginPage = () => {
-    const {register, handleSubmit, onSubmit, errors, store, toAccountPage} = useLogin();
-
-    if(store.isAuth) {
-        return (
-            <div className={styles.isAuthInner}>
-                <p>Вы уже авторизованы, можете войти</p>
-                <div onClick={toAccountPage} className={classNames(styles.inputField, styles.button)}>
-                    <button>Войти</button>
-                </div>
-            </div>
-        )
-    }
+    const {register, handleSubmit, onSubmit, errors} = useLogin();
 
     return (
         <div className={styles.loginPage}>

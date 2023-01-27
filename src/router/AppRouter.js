@@ -8,20 +8,20 @@ const AppRouter = ({store}) => {
     return (
         store.isAuth 
         ?
-            <Routes>
+            <Routes> {/*Тут только те роуты, где пользователь авторизован*/}
                 {privateRoutes.map(route => 
                     <Route key={route.path} path={route.path} element={route.component} />
                 )}
-                <Route path="*" element={<Navigate to="/lk/account" />} />
+                <Route path="*" element={<Navigate to="/lk/account" replace />} /> {/*  replace - чтобы почистить историю браузера */}
             </Routes>
         :
-            <Routes>
+            <Routes> {/*Тут только те роуты, где пользователь еще не авторизован и лк ему недоступен*/}
                 <Route path="/" element={<AuthLayout />}>
                     {publicRoutes.map(route => 
                         <Route key={route.path} path={route.path} element={route.component} />    
                     )}
                 </Route>
-                <Route path="*" element={<Navigate to="/login" replace />} />  replace - чтобы почистить историю браузера
+                <Route path="*" element={<Navigate to="/login" replace />} /> {/*  replace - чтобы почистить историю браузера */}
             </Routes>
     )
 }
