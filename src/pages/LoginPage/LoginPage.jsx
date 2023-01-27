@@ -7,7 +7,18 @@ import { EMAIL_REGEX } from '../../utils/regexExp';
 import classNames from "classnames";
 
 const LoginPage = () => {
-    const {register, handleSubmit, onSubmit, errors, store} = useLogin();
+    const {register, handleSubmit, onSubmit, errors, store, toAccountPage} = useLogin();
+    
+    if(store.isAuth) {
+        return (
+            <div className={styles.isAuthInner}>
+                <p>Вы уже авторизованы, можете войти</p>
+                <div onClick={toAccountPage} className={classNames(styles.inputField, styles.button)}>
+                    <button>Войти</button>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={styles.loginPage}>

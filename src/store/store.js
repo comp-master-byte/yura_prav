@@ -28,11 +28,12 @@ export default class Store {
         this.registerBtnText = text;
     }
 
-    async login(loginData) {
+    async login(loginData, callback) {
         try {
             const response = await AuthService.login(loginData);
             localStorage.setItem('token', response.data.auth_token);
             this.setAuth(true);
+            callback();
         } catch(e) {
             console.log(e);
         }
