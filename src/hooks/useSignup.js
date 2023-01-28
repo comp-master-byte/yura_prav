@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {Context} from "../index"
@@ -18,14 +18,8 @@ export const useSignup = () => {
             gender: selectGender,
             username: 'user'
         }
-        await store.registration(dataToSubmit, setTimeout(() => navigate('/login'), 2000));
+        await store.registration(dataToSubmit, setTimeout(() => navigate('/'), 2000));
     }
-
-    useEffect(() => {
-        if(store.isAuth) {
-            navigate('/login');
-        }
-    }, [store.isAuth])
 
     return {
         register, 

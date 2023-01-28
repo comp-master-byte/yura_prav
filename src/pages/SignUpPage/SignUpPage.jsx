@@ -132,7 +132,7 @@ const SignUpPage = () => {
             
             <div className={styles.loginSignup}>
                 <span className={styles.text}>Уже есть аккаунт?</span>
-                <Link to="/login" className={`${styles.text} ${styles.signupText}`}>Войдите сейчас</Link>
+                <Link to="/" className={`${styles.text} ${styles.signupText}`}>Войдите сейчас</Link>
             </div>
         </div>
     )
