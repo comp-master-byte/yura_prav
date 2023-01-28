@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState, useContext } from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
@@ -13,20 +12,23 @@ export const useSignup = () => {
 
     const [selectGender, setSelectGender] = useState('');
 
+    const toLoginPage = () => {
+        setTimeout(() => {
+            navigate('/');  
+            store.setIsLoading(false);
+            store.setRegisterBtnText('Зарегестрироваться'); 
+        }, 2000);
+    } 
+
+
     const onSubmit = async (data) => {
         const dataToSubmit = {
             ...data, 
             gender: selectGender,
             username: 'user'
         }
-        await store.registration(dataToSubmit);
+        await store.registration(dataToSubmit, toLoginPage);
     }
-
-    useEffect(() => { // После успешной регистрации переносим пользователя на главную страницу
-        if(Object.keys(store.user).length) {
-            setTimeout(() => navigate('/'), 2000);
-        }
-    }, [store.user])
 
     return {
         register, 

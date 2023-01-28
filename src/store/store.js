@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import AuthService from "../services/AuthService";
 import {toast} from "react-toastify";
+import UserService from "../services/UserService";
 
 export default class Store {
     user = {};
@@ -36,12 +37,19 @@ export default class Store {
         }
     }
 
+    async getUserInformation() {
+        try {
+            const user = UserService.getUser();
+            console.log(user);
+        } catch(e) {
+            console.log(e.response.data);
+        }
+    }
+
     async login(loginData, callback) {
         try {
             const response = await AuthService.login(loginData);
-            const toStringUser = JSON.stringify(this.user);
             localStorage.setItem('token', response.data.auth_token);
-            localStorage.setItem('user', toStringUser);
             this.setAuth(true);
             callback();
         } catch(e) {
@@ -49,7 +57,7 @@ export default class Store {
         }
     }
 
-    async registration(registrationData) {
+    async registration(registrationData, callback) {
         try {
             this.setIsLoading(true);
             this.setRegisterBtnText('Загрузка...');
@@ -62,7 +70,7 @@ export default class Store {
             })
             this.setUser(response.data);
             this.setRegisterBtnText('Переносим на вход...');
-            // callback();
+            await callback();
         } catch(e) {
             toast('Произошла какая-то ошибка', {
                 type: 'error',
