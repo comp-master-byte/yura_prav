@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import { useState, useContext } from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {Context} from "../index"
 
 export const useSignup = () => {
-    const {register, handleSubmit, formState: {errors}, control} = useForm({mode: 'all'});
+    const {register, handleSubmit, formState: {errors}, control} = useForm({mode: 'onChange'});
 
     const navigate = useNavigate();
 
@@ -18,8 +19,14 @@ export const useSignup = () => {
             gender: selectGender,
             username: 'user'
         }
-        await store.registration(dataToSubmit, setTimeout(() => navigate('/'), 2000));
+        await store.registration(dataToSubmit);
     }
+
+    useEffect(() => { // После успешной регистрации переносим пользователя на главную страницу
+        if(Object.keys(store.user).length) {
+            setTimeout(() => navigate('/'), 2000);
+        }
+    }, [store.user])
 
     return {
         register, 

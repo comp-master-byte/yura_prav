@@ -62,6 +62,7 @@ export default class Store {
             })
             this.setUser(response.data);
             this.setRegisterBtnText('Переносим на вход...');
+            // callback();
         } catch(e) {
             toast('Произошла какая-то ошибка', {
                 type: 'error',
