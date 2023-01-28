@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../../styles/auth.module.scss";
 import {Link} from "react-router-dom";
 import UIInput from '../../UI/UIInput';
-import { useLogin } from '../../hooks/useLogin';
+import { useLogin } from '../../hooks/auth/useLogin';
 import { EMAIL_REGEX } from '../../utils/regexExp';
 import classNames from "classnames";
 import {observer} from "mobx-react-lite";

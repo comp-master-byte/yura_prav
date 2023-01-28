@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
-import {Context} from "../index"
+import {Context} from "../../index"
 
 export const useSignup = () => {
     const {register, handleSubmit, formState: {errors}, control} = useForm({mode: 'onChange'});

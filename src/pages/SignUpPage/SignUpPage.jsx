@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/auth.module.scss";
 import {Link} from "react-router-dom"
-import { useSignup } from "../../hooks/useSignup";
+import { useSignup } from "../../hooks/auth/useSignup";
 import { EMAIL_REGEX } from "../../utils/regexExp";
 import UIInput from "../../UI/UIInput";
 import UIInputMask from "../../UI/UIInputMask";

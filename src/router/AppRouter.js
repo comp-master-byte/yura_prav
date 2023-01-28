@@ -1,10 +1,10 @@
 import React from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
-import AuthLayout from "../components/AuthLayout/AuthLayout";
-import { privateRoutes, publicRoutes } from "./index";
 import {observer} from "mobx-react-lite"
+import AuthLayout from "../components/Layout/AuthLayout/AuthLayout";
+import AccountLayout from "../components/Layout/AccountLayout/AccountLayout";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import AccountLayout from "../components/AccountLayout/AccountLayout";
+import { privateRoutes, publicRoutes } from "./index";
 
 const AppRouter = ({store}) => { 
     return (
