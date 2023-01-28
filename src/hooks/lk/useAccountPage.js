@@ -9,5 +9,7 @@ export const useAccountPage = () => {
         store.getUserInformation()
     }, [])
 
-    return {store}
+    return {
+        store
+    }
 }

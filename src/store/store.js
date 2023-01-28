@@ -39,8 +39,8 @@ export default class Store {
 
     async getUserInformation() {
         try {
-            const user = UserService.getUser();
-            console.log(user);
+            const user = await UserService.getUser();
+            this.setUser(user);
         } catch(e) {
             console.log(e.response.data);
         }

@@ -20,7 +20,6 @@ export const useSignup = () => {
         }, 2000);
     } 
 
-
     const onSubmit = async (data) => {
         const dataToSubmit = {
             ...data, 
