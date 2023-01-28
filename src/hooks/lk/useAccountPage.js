@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { useEffect } from "react"
 import { Context } from "../.."
-import { toJS } from 'mobx';
 
 export const useAccountPage = () => {
     const {store, lawyer} = useContext(Context);
@@ -14,8 +13,6 @@ export const useAccountPage = () => {
     useEffect(() => {
         getAllNecessaryData();
     }, [])
-
-    console.log(toJS(lawyer.lawyerHelp));
 
     return {
         store,

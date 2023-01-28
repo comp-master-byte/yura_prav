@@ -1,0 +1,17 @@
+.lawyerHelpItem {
+    // width: 300px;
+    // height: 200px;
+    border-radius: 20px;
+    background-color: #fff;
+    filter: drop-shadow(0px 0px 3px #fff);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .lawyerHelpHeader {
+        .lawyerHelpHeader__text {
+            color: #003878;
+        }
+    }
+}
