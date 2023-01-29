@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { useEffect } from "react"
+import { toJS } from "mobx";
+import { useContext, useEffect } from "react"
 import { Context } from "../.."
 
 export const useAccountPage = () => {
@@ -13,6 +13,8 @@ export const useAccountPage = () => {
     useEffect(() => {
         getAllNecessaryData();
     }, [])
+
+    console.log(toJS(lawyer.lawyerHelp));
 
     return {
         store,

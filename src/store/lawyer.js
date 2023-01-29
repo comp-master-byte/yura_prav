@@ -1,11 +1,13 @@
-import { makeAutoObservable } from "mobx";
+import { makeObservable, observable } from "mobx";
 import LawyerService from "../services/LawyerService";
 
 export default class Lawyer {
     lawyerHelp = {}
     
     constructor() {
-        makeAutoObservable(this);
+        makeObservable(this, {
+            lawyerHelp: observable,
+        })
     }
 
     setLawyerHelp(help) {
@@ -15,7 +17,11 @@ export default class Lawyer {
     async getSelectedLawyerHelp(id) {
         try {
             const data = await LawyerService.getLawyerNode(id);
-            this.setLawyerHelp(data);
+            const newData = {
+                ...data,
+                answers: Object.entries(data.answers)
+            }
+            this.setLawyerHelp(newData);
         } catch(error) {
             console.log(error.response.data);
         }

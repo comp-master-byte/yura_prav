@@ -1,15 +1,22 @@
 import React from 'react';
 import styles from "./LawyerHelpItem.module.scss";
+import {observer} from "mobx-react-lite";
 
 const LawyerHelpItem = ({item}) => {
-    console.log(item);
+
     return (
         <div className={styles.lawyerHelpItem}>
             <header className={styles.lawyerHelpHeader}>
                 <h2 className={styles.lawyerHelpHeader__text}>{item.message}</h2>
             </header>
+
+            <main className={styles.lawyerHelperAnswers}>
+                {item?.answers?.map(answer=>
+                    <div className={styles.lawyerHelperAnswer}>{answer[0]}</div>
+                )}
+            </main>
         </div>
     )
 }
 
-export default LawyerHelpItem;
+export default observer(LawyerHelpItem);
