@@ -1,4 +1,4 @@
-import { makeObservable, observable } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import LawyerService from "../services/LawyerService";
 
 export default class Lawyer {
@@ -7,6 +7,7 @@ export default class Lawyer {
     constructor() {
         makeObservable(this, {
             lawyerHelp: observable,
+            setLawyerHelp: action
         })
     }
 
@@ -14,7 +15,7 @@ export default class Lawyer {
         this.lawyerHelp = help;
     }
 
-    async getSelectedLawyerHelp(id) {
+    async getSelectedLawyerHelp(id = 1) {
         try {
             const data = await LawyerService.getLawyerNode(id);
             const newData = {

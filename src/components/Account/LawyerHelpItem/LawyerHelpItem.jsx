@@ -12,7 +12,7 @@ const LawyerHelpItem = ({item}) => {
 
             <main className={styles.lawyerHelperAnswers}>
                 {item?.answers?.map(answer=>
-                    <div className={styles.lawyerHelperAnswer}>{answer[0]}</div>
+                    <div key={answer[1]} className={styles.lawyerHelperAnswer}>{answer[0]}</div>
                 )}
             </main>
         </div>

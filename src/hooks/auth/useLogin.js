@@ -20,6 +20,5 @@ export const useLogin = () => {
         errors,
         onSubmit,
         store,
-        toAccountPage
     }
 }

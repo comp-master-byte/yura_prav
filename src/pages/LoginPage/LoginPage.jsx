@@ -8,7 +8,7 @@ import classNames from "classnames";
 import {observer} from "mobx-react-lite";
 
 const LoginPage = () => {
-    const {register, handleSubmit, onSubmit, errors} = useLogin();
+    const {register, handleSubmit, onSubmit, errors, store} = useLogin();
 
     return (
         <div className={styles.loginPage}>
@@ -56,8 +56,11 @@ const LoginPage = () => {
                     <a href="#" className={styles.text}>Забыли пароль?</a>
                 </div>
 
-                <div className={classNames(styles.inputField, styles.button)}>
-                    <button disabled={Object.keys(errors).length > 0}>Войти</button>
+                <div className={classNames(styles.inputField, styles.button, {
+                    [styles.disabledBtn]: Object.keys(errors).length > 0,
+                    [styles.loadingBtn]: store.isLoading
+                })}>
+                    <button disabled={Object.keys(errors).length > 0||store.isLoading}>{store.loginBtnText}</button>
                 </div>
             </form>
             

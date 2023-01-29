@@ -5,11 +5,11 @@ import { useAccountPage } from '../../hooks/lk/useAccountPage';
 import styles from "./AccountPage.module.scss";
 
 const AccountPage = () => {
-    const {store, lawyer} = useAccountPage();
-
+    const {lawyer} = useAccountPage();
 
     return (
-        <div>
+        <div className={styles.accountPage}>
+            
             <LawyerHelpItem item={lawyer.lawyerHelp} />
         </div>
     )

@@ -7,7 +7,9 @@ export default class Store {
     user = {};
     isAuth = false;
     isLoading = false;
+    isAccountPopupVisible = false;
     registerBtnText = "Зарегестрироваться";
+    loginBtnText = "Войти";
 
     constructor() {
         makeAutoObservable(this);
@@ -29,6 +31,10 @@ export default class Store {
         this.registerBtnText = text;
     }
 
+    setLoginBtnText(text) {
+        this.loginBtnText = text;
+    }
+
     checkAuth() {
         if(localStorage.getItem('token')) {
             this.setAuth(true);
@@ -37,9 +43,29 @@ export default class Store {
         }
     }
 
+    checkUser() {
+        const userData = localStorage.getItem('user');
+        const parsedUser = JSON.parse(userData);
+        if(userData) {
+            this.setUser(parsedUser);
+        } else {
+            this.getUserInformation();
+        }
+    }
+
+    accountPopupToVisible(bool) {
+        this.isAccountPopupVisible = bool;
+    }
+
+    accountPopupToHide(bool) {
+        this.isAccountPopupVisible = bool;
+    }
+
     async getUserInformation() {
         try {
             const user = await UserService.getUser();
+            const toStringUser = JSON.stringify(user);
+            localStorage.setItem('user', toStringUser);
             this.setUser(user);
         } catch(e) {
             console.log(e.response.data);
@@ -48,12 +74,17 @@ export default class Store {
 
     async login(loginData, callback) {
         try {
+            this.setIsLoading(true);
+            this.setLoginBtnText('Выполняем вход...');
             const response = await AuthService.login(loginData);
             localStorage.setItem('token', response.data.auth_token);
             this.setAuth(true);
             callback();
         } catch(e) {
             console.log(e);
+        } finally {
+            this.setIsLoading(false);
+            this.setLoginBtnText('Войти');
         }
     }
 

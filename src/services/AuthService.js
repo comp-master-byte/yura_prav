@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../http";
+import $api, { API_URL } from "../http";
 
 export default class AuthService {
     static async login(loginData) {
@@ -11,6 +11,6 @@ export default class AuthService {
     }
 
     static async logout() {
-        return axios.post(`${API_URL}/auth/token/logut`);
+        return $api.post('/auth/token/logout');
     }
 }
