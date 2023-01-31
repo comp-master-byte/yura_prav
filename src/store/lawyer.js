@@ -18,6 +18,7 @@ export default class Lawyer {
     async getSelectedLawyerHelp(id = 1) {
         try {
             const data = await LawyerService.getLawyerNode(id);
+            console.log(data);
             const newData = {
                 ...data,
                 answers: Object.entries(data.answers)

@@ -1,4 +1,4 @@
-import { makeAutoObservable, configure } from "mobx";
+import { makeAutoObservable } from "mobx";
 import AuthService from "../services/AuthService";
 import {toast} from "react-toastify";
 import UserService from "../services/UserService";

@@ -18,14 +18,33 @@
                 display: flex;
                 align-items: center;
                 color: #fff;
-                position: relative;
 
-                .headerInfo__text {
-                    font-size: 20px;
-                    font-weight: 500;
+                .headerTextInfo {
                     margin-right: 20px;
-                }   
-                i {
+
+                    .headerTextInfo__text {
+                        font-size: 20px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+
+                    .logoutBtn {
+                        text-align: right;
+                        opacity: .5;
+                        cursor: pointer;
+
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            outline: none;
+                            font-size: 18px;
+                            color: #fff;
+                            cursor: pointer;
+                            margin-right: 2px;
+                        }
+                    }
+                }
+                .exitIcon {
                     color: #003878;
                     width: 30px;
                     height: 30px;
@@ -35,27 +54,7 @@
                     background-color: #fff;
                     border-radius: 30px;
                     box-shadow: 0 0 10px #fff;
-                    cursor: pointer;
                 }
-            }
-            .accountUserPopup {
-                position: absolute;
-                background-color: #fff;
-                color: #003878;
-                border-radius: 10px;
-                padding: 10px;
-                top: 110%;
-                left: 50%;
-                width: 200px;
-                opacity: 0;
-                pointer-events: none;
-                transition: opacity .25s;
-            }
-
-            .visibleAccountPopup {
-                opacity: 1;
-                pointer-events: all;
-                transition: opacity .25s;
             }
         }
 

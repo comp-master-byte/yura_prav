@@ -10,7 +10,7 @@ const AccountPage = () => {
     return (
         <div className={styles.accountPage}>
             
-            <LawyerHelpItem item={lawyer.lawyerHelp} />
+            <LawyerHelpItem item={lawyer} />
         </div>
     )
 }
