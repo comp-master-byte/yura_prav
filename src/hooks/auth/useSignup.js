@@ -4,13 +4,16 @@ import {useNavigate} from "react-router-dom";
 import {Context} from "../../index"
 
 export const useSignup = () => {
-    const {register, handleSubmit, formState: {errors}, control} = useForm({mode: 'onChange'});
+    const {register, handleSubmit, formState: {errors}, control} = useForm({mode: "all"});
 
     const navigate = useNavigate();
 
     const {store} = useContext(Context);
 
     const [selectGender, setSelectGender] = useState('');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
     const toLoginPage = () => {
         setTimeout(() => {
@@ -37,6 +40,8 @@ export const useSignup = () => {
         control,
         setSelectGender,
         selectGender,
-        store
+        store,
+        togglePasswordVisibility,
+        isPasswordVisible
     }
 }

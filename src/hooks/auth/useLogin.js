@@ -1,14 +1,18 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { Context } from "../../index";
 
 export const useLogin = () => {
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm({mode: "all"});
     const {store} = useContext(Context);
     const navigate = useNavigate();
 
     const toAccountPage = () => navigate('/lk/account');
+
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
     const onSubmit = (data) => {
         store.login(data, toAccountPage);
@@ -20,5 +24,7 @@ export const useLogin = () => {
         errors,
         onSubmit,
         store,
+        togglePasswordVisibility, 
+        isPasswordVisible
     }
 }

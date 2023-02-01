@@ -18,7 +18,9 @@ const SignUpPage = () => {
         control, 
         setSelectGender, 
         selectGender,
-        store
+        store,
+        togglePasswordVisibility,
+        isPasswordVisible
     } = useSignup();
 
     return (
@@ -69,12 +71,14 @@ const SignUpPage = () => {
                 />
                 <UIInput 
                     name="password"
-                    type="password"
+                    type={isPasswordVisible ? "text" : "password"}
                     placeholder="Введите ваш пароль*"
                     register={register}
                     error={errors.password}
                     iconClassName={`uil uil-lock ${styles.icon}`}
-                    extraIconClassName={`uil uil-eye-slash ${styles.showHidePw}`}
+                    extraIconClassName={isPasswordVisible ? `uil uil-eye ${styles.showHidePw}` : `uil uil-eye-slash ${styles.showHidePw}`}
+                    isPasswordVisible={isPasswordVisible}
+                    togglePasswordVisibility={togglePasswordVisibility}
                     validation={{
                         required: 'Это поле обязательное',
                         minLength: {

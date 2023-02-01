@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./UIInput.module.scss";
 import classNames from "classnames";
 
-const UIInput = ({register, name, type, placeholder, validation, error, iconClassName, extraIconClassName}) => {
+const UIInput = ({register, name, type, placeholder, validation, error, iconClassName, extraIconClassName, togglePasswordVisibility, isPasswordVisible}) => {
     return (
         <div className={classNames(styles.inputField, {
             [styles.errorInputField]: error,
@@ -14,9 +14,16 @@ const UIInput = ({register, name, type, placeholder, validation, error, iconClas
                 {...register(name, validation)}
             />
             <i className={iconClassName}></i>
-            {type === "password" && <i className={classNames(extraIconClassName, {
-                [styles.showHidePw]: type === "password"
-            })}></i>}
+            {(type === "password"||isPasswordVisible) && 
+                <i 
+                    onClick={togglePasswordVisibility}
+                    className={classNames(extraIconClassName, {
+                        [styles.showHidePw]: (type === "password"|| isPasswordVisible)
+                    })}
+                >
+                </i>
+            }
+            
             {error && <div className={styles.errorMessage}>{error.message}</div>}
         </div>
     )
