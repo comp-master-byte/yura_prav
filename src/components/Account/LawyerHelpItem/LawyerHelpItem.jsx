@@ -2,13 +2,17 @@ import React, { useContext } from 'react';
 import styles from "./LawyerHelpItem.module.scss";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../../index"
+import classNames from 'classnames';
+import UIButton from '../../../UI/UIButton/UIButton';
 
 const LawyerHelpItem = () => {
     const {lawyer} = useContext(Context);
 
     return (
         <div className={styles.lawyerHelpItem}>
-            <header className={styles.lawyerHelpHeader}>
+            <header className={classNames(styles.lawyerHelpHeader, {
+                [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length
+            })}>
                 <h2 className={styles.lawyerHelpHeader__text}>{lawyer.lawyerHelp.message}</h2>
             </header>
             <main className={styles.lawyerHelperAnswers}>
@@ -26,6 +30,7 @@ const LawyerHelpItem = () => {
                         </div>
                 )}
             </main>
+            {lawyer.lawyerHelp?.node_id !== "1" && <UIButton onClick={() => lawyer.getPreviousLawyerHelp()}>Назад</UIButton>}
         </div>
     )
 }
