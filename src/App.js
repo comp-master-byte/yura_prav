@@ -12,7 +12,7 @@ const App = () => {
 
     return (
         <div>
-            <AppRouter store={store} />
+            <AppRouter />
         </div>
     )
 }

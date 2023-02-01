@@ -6,9 +6,10 @@ import AccountLayout from "../components/Layout/AccountLayout/AccountLayout";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import { privateRoutes, publicRoutes } from "./index";
 
-const AppRouter = ({store}) => { 
+const AppRouter = () => { 
+
     return (
-        store.isAuth 
+        localStorage.getItem('token')
         ?
             <Routes> {/*Тут только те роуты, где пользователь авторизован*/}
                 <Route path='/lk/' element={<AccountLayout />}>
