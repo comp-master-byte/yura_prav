@@ -80,6 +80,12 @@ export default class Store {
             localStorage.setItem('token', response.data.auth_token);
             this.setAuth(true);
             callback();
+            toast('Вы успешно авторизовались!', {
+                type: 'success',
+                position: 'top-right',
+                pauseOnHover: true,
+                autoClose: 2000
+            })
         } catch(e) {
             toast(e.response.data.non_field_errors[0], {
                 type: 'error',

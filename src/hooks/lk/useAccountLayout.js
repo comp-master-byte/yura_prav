@@ -1,11 +1,15 @@
 import { useContext, useEffect } from "react"
 import { Context } from "../.."
 
-export const useAccountPage = () => {
+export const useAccountLayout = () => {
     const {store, lawyer} = useContext(Context);
 
-    const getAllNecessaryData = async () => {
-        await lawyer.getSelectedLawyerHelp();
+    const logoutFromAccount = () => {
+        store.logout();
+    }
+
+    const getAllNecessaryData = () => {
+        lawyer.getSelectedLawyerHelp();
         store.checkUser();
     }
 
@@ -14,7 +18,7 @@ export const useAccountPage = () => {
     }, [])
 
     return {
-        store,
-        lawyer
+        logoutFromAccount,
+        store
     }
 }

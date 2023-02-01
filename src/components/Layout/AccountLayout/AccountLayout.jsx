@@ -1,20 +1,12 @@
 import React from "react";
 import styles from "./AccountLayout.module.scss";
 import {Outlet} from "react-router-dom";
-import { useContext } from 'react';
-import { Context } from "../../../index";
 import {observer} from "mobx-react-lite";
 import classNames from "classnames";
-import {useNavigate} from "react-router-dom";
+import { useAccountLayout } from "../../../hooks/lk/useAccountLayout";
 
 const AccountLayout = () => {
-    const {store} = useContext(Context);
-    const navigate = useNavigate();
-
-    const logoutFromAccount = () => {
-        store.logout();
-        navigate('/');
-    }
+    const {logoutFromAccount, store} = useAccountLayout();
 
     return (
         <div className={styles.accountWrapper}>
@@ -24,8 +16,8 @@ const AccountLayout = () => {
                     <div className={styles.headerInfo}>
                         <div className={styles.headerTextInfo}>
                             <p className={styles.headerTextInfo__text}>{store.user.last_name} {store.user.first_name}</p>
-                            <div className={styles.logoutBtn}>
-                                <button onClick={logoutFromAccount}>Выйти</button>
+                            <div onClick={logoutFromAccount} className={styles.logoutBtn}>
+                                <button>Выйти</button>
                                 <i className={classNames("uil uil-signout")}></i>
                             </div>
                         </div>
