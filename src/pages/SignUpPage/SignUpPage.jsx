@@ -102,7 +102,9 @@ const SignUpPage = () => {
                     </div>
                 </div>
                 
-                <div className={classNames(styles.genderText)}>
+                <div className={classNames(styles.genderText, {
+                    [styles.checkboxError]: !selectGender && Object.keys(errors).length > 0
+                })}>
                     <div className={styles.genderTitle}>Укажите ваш пол*</div>
                     <div className={styles.genderContent}>
                         <div className={styles.checkboxContent}>

@@ -106,12 +106,6 @@
     }
 }
 
-.genderError {
-    .genderTitle {
-        color: red;
-    }
-}
-
 .button {
     margin-top: 35px;
 
@@ -186,4 +180,18 @@ a.text {
     p {
         font-size: 20px;
     }
+}
+
+// errors
+.checkboxError .genderTitle, 
+.checkboxError label {
+    color: #e36060;    
+}
+.checkboxError input {
+}
+
+.customCheckboxError {
+    font-size: 12px;
+    color: #e36060;
+    margin-top: 2px;
 }
