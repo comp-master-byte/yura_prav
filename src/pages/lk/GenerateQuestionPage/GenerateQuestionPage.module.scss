@@ -1,12 +1,28 @@
 .generateQuestionWrapper {
     max-width: 600px;
     width: 100%;
-    height: 500px;
     background-color: #fff;
     filter: drop-shadow(0px 0px 3px #fff);
     border-radius: 20px;
     margin: 0 auto;
-    padding: 20px;overflow: hidden;
+    padding: 20px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            color: #003878;
+            cursor: pointer;
+            opacity: .5;
+        }
+
+    }
 
     .title {
         font-size: 27px;
@@ -32,6 +48,7 @@
 
         .generateAnswerList__btn {
             margin-top: 30px;
+            margin-bottom: 20px;
         }
     }
     .generateAnswerList::-webkit-scrollbar {
@@ -53,6 +70,7 @@
     margin-top: 10px;
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
     
     .genderTitle {
         margin-right: 20px;
@@ -75,4 +93,16 @@
             }
         }
     }
+}
+
+.submitBtns {
+    display: flex;
+    justify-content: center;
+    button {
+        width: 100%;
+    }
+}
+
+.withoutMarginBottom {
+    margin-bottom: 0;
 }

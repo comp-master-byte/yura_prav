@@ -20,7 +20,10 @@ const GenerateQuestionPage = () => {
 
     return (
         <div className={styles.generateQuestionWrapper}>
-            <span className={styles.title}>Напишите ваш вопрос/ответ</span>
+            <div className={styles.header}>
+                <span className={styles.title}>Напишите ваш вопрос/ответ</span>
+                <button>Назад</button>
+            </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <UIInput 
                     name="message"
@@ -33,6 +36,7 @@ const GenerateQuestionPage = () => {
                     }}
                 />
                 <div className={classNames(styles.genderText, {
+                    [styles.withoutMarginBottom]: (answersList.length > 0 && selectQuestionOrAnswer === "q")
                 })}>
                     <div className={styles.genderTitle}>К какой категории относится ваше сообщение</div>
                     <div className={styles.genderContent}>
@@ -63,13 +67,13 @@ const GenerateQuestionPage = () => {
                             <UIInput 
                                 key={item.id}
                                 name={item.name}
-                                togglePasswordVisibility={() => deleteSelectedAnswer(item.id)}
+                                togglePasswordVisibility={(e) => deleteSelectedAnswer(e, item.id)}
                                 isPasswordVisible={true}
                                 placeholder="Напишите ответ на вопрос"
                                 register={register}
                                 error={errors[item.name]}
                                 iconClassName={`uil uil-text`}
-                                extraIconClassName={answersList.length > 1 && `uil uil-trash-alt`}
+                                extraIconClassName={`uil uil-trash-alt`}
                                 validation={{
                                     required: 'Это поле обязательное',
                                 }}
@@ -78,6 +82,10 @@ const GenerateQuestionPage = () => {
                         <UIButton customClassName={styles.generateAnswerList__btn} onClick={(e) => addAnswerToTheList(e)}>Добавить ответ</UIButton>
                     </div>
                 }
+
+                <div className={styles.submitBtns}>
+                    <UIButton>Отправить</UIButton>
+                </div>
             </form>
         </div>
     )

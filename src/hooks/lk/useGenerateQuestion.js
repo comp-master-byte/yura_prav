@@ -21,10 +21,10 @@ export const useGenerateQuestion = () => {
         setAnswersList([...answersList, newAnswer])
     }
 
-    const deleteSelectedAnswer = (id) => {
-        if(answersList.length > 1) {
-            setAnswersList(answersList.filter(answer => answer.id !== id));
-        }
+    const deleteSelectedAnswer = (e, id) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setAnswersList(answersList.filter(answer => answer.id !== id));
     }
 
     const onSubmit = (data) => {
