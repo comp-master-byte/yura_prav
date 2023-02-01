@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "http://ane4ka.site";
+export const API_URL = "https://ane4ka.site";
 
 const $api = axios.create({
     withCredentials: true,

@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import {useNavigate} from "react-router-dom";
 import {Context} from "../../index"
 
+
 export const useSignup = () => {
     const {register, handleSubmit, formState: {errors}, control} = useForm({mode: "all"});
 
@@ -42,6 +43,6 @@ export const useSignup = () => {
         selectGender,
         store,
         togglePasswordVisibility,
-        isPasswordVisible
+        isPasswordVisible,
     }
 }
