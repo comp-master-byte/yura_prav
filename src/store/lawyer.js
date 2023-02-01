@@ -1,4 +1,5 @@
 import { makeObservable, observable, action } from "mobx";
+import CreateQuestionService from "../services/CreateQuestionService";
 import LawyerService from "../services/LawyerService";
 
 export default class Lawyer {
@@ -14,6 +15,15 @@ export default class Lawyer {
 
     setLawyerHelp(help) {
         this.lawyerHelp = help;
+    }
+
+    async createLawyerQuestion(id = 2) {
+        try {
+            const response = CreateQuestionService.createQuestion(id);
+            console.log(response);
+        } catch(e) {
+            console.log(e.response.data);
+        }
     }
 
     async getPreviousLawyerHelp(returnId = 2) {

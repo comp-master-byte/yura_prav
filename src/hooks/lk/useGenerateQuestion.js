@@ -41,6 +41,9 @@ export const useGenerateQuestion = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        console.log(answersList);
+
+        lawyer.createLawyerQuestion();
     }
 
     return {
