@@ -72,14 +72,13 @@ export default class Store {
         }
     }
 
-    async login(loginData, callback) {
+    async login(loginData) {
         try {
             this.setIsLoading(true);
             this.setLoginBtnText('Выполняем вход...');
             const response = await AuthService.login(loginData);
             localStorage.setItem('token', response.data.auth_token);
             this.setAuth(true);
-            callback();
             toast('Вы успешно авторизовались!', {
                 type: 'success',
                 position: 'top-right',
@@ -132,6 +131,7 @@ export default class Store {
         try {
             const response = await AuthService.logout();
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             this.setAuth(false);
             this.setUser({});
         } catch(e) {

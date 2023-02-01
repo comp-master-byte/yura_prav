@@ -12,8 +12,9 @@ const LoginPage = () => {
     const {register, handleSubmit, onSubmit, errors, store, togglePasswordVisibility, isPasswordVisible} = useLogin();
 
     return (
+        <>
+        <ToastContainer />
         <div className={styles.loginPage}>
-            <ToastContainer />
             <span className={styles.title}>Вход</span>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <UIInput 
@@ -73,6 +74,8 @@ const LoginPage = () => {
                 <Link to="/signup" className={`${styles.text} ${styles.signupText}`}>Зарегестрируйтесь сейчас</Link>
             </div>
         </div>
+        </>
+
     )
 }
 

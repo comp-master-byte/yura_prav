@@ -15,7 +15,10 @@ export const useLogin = () => {
     const togglePasswordVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
     const onSubmit = (data) => {
-        store.login(data, toAccountPage);
+        store.login(data);
+        setTimeout(() => {
+            toAccountPage();
+        }, 1000)
     }
 
     return {

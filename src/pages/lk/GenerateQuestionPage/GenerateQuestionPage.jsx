@@ -3,7 +3,9 @@ import styles from "./GenerateQuestionPage.module.scss";
 
 const GenerateQuestionPage = () => {
     return (
-        <div>GenerateQuestionPage</div>
+        <div className={styles.generateQuestionWrapper}>
+            <span className={styles.title}>Напишите ваш вопрос/ответ</span>
+        </div>
     )
 }
 

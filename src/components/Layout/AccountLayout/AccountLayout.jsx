@@ -25,7 +25,9 @@ const AccountLayout = () => {
                     </div>
                 </header>
                 <main className={styles.accountMainContent}>
-                    <Outlet />
+                    <div className={styles.mainContentInner}>
+                        <Outlet />
+                    </div>
                 </main>
             </div>
         </div>

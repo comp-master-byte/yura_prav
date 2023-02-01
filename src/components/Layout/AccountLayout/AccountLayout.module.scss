@@ -6,13 +6,12 @@
         padding-top: 30px;
         max-width: 70%;
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
+        // display: flex;
+        // flex-direction: column;
 
         .accountHeader {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 200px;
 
             .headerInfo {
                 display: flex;
@@ -59,7 +58,13 @@
         }
 
         .accountMainContent {
-            flex: 1 1 auto;
+            display: flex;
+            height: calc(100vh - 185px);
+            align-items: center;
+            .mainContentInner {
+                flex: 1 1 auto;
+            }
+
         }
     }
 }

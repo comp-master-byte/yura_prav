@@ -5,11 +5,13 @@ import AuthLayout from "../components/Layout/AuthLayout/AuthLayout";
 import AccountLayout from "../components/Layout/AccountLayout/AccountLayout";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import { privateRoutes, publicRoutes } from "./index";
+import { useContext } from "react";
+import { Context } from "..";
 
 const AppRouter = () => { 
-
+    const {store} = useContext(Context);
     return (
-        localStorage.getItem('token')
+        store.isAuth
         ?
             <Routes> {/*Тут только те роуты, где пользователь авторизован*/}
                 <Route path='/lk/' element={<AccountLayout />}>
@@ -17,7 +19,7 @@ const AppRouter = () => {
                         <Route key={route.path} path={route.path} element={route.component} />
                     )}
                 </Route>
-                <Route path="*" element={<Navigate to="/lk/account" replace />} /> {/*  replace - чтобы почистить историю браузера */}
+                <Route path="*" element={<Navigate to="/lk/account" replace />} />  replace - чтобы почистить историю браузера
             </Routes>
         :
             <Routes> {/*Тут только те роуты, где пользователь еще не авторизован и лк ему недоступен*/}
@@ -27,7 +29,7 @@ const AppRouter = () => {
                         <Route key={route.path} path={route.path} element={route.component} />    
                     )}
                 </Route>
-                <Route path="*" element={<Navigate to="/" replace />} /> {/*  replace - чтобы почистить историю браузера */}
+                <Route path="*" element={<Navigate to="/" replace />} /> 
             </Routes>
     )
 }
