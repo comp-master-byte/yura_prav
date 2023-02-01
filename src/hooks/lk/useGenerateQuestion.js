@@ -1,13 +1,25 @@
+import { useContext } from "react";
 import { useState } from "react";
 import {useForm} from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import {Context} from "../../index"
 
 export const useGenerateQuestion = () => {
+    const {lawyer} = useContext(Context);
+
     const {register, formState: {errors}, handleSubmit} = useForm();
+
+    const navigate = useNavigate();
 
     const [selectQuestionOrAnswer, setSelectQuestionOrAnswer] = useState('');
     const [answersList, setAnswersList] = useState([
         {id: 1, name: 'answer'}
     ])
+
+    const returnToPreviousQuestion = () => {
+        lawyer.getPreviousLawyerHelp(1);
+        navigate('/lk/account');
+    }
 
     const addAnswerToTheList = (e) => {
         e.preventDefault();
@@ -40,6 +52,7 @@ export const useGenerateQuestion = () => {
         setSelectQuestionOrAnswer,
         answersList,
         addAnswerToTheList,
-        deleteSelectedAnswer   
+        deleteSelectedAnswer,
+        returnToPreviousQuestion
     }
 }

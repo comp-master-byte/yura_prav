@@ -15,24 +15,25 @@ const GenerateQuestionPage = () => {
         setSelectQuestionOrAnswer, 
         answersList,
         addAnswerToTheList,
-        deleteSelectedAnswer
+        deleteSelectedAnswer,
+        returnToPreviousQuestion
     } = useGenerateQuestion();
 
     return (
         <div className={styles.generateQuestionWrapper}>
             <div className={styles.header}>
                 <span className={styles.title}>Напишите ваш вопрос/ответ</span>
-                <button>Назад</button>
+                <button onClick={returnToPreviousQuestion}>Назад</button>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <UIInput 
                     name="message"
                     placeholder="Напишите ваш текст"
                     register={register}
-                    error={errors.email}
+                    error={errors.message}
                     iconClassName={`uil uil-question-circle`}
                     validation={{
-                        required: 'Это поле обязательное',
+                        required: true
                     }}
                 />
                 <div className={classNames(styles.genderText, {
@@ -75,7 +76,7 @@ const GenerateQuestionPage = () => {
                                 iconClassName={`uil uil-text`}
                                 extraIconClassName={`uil uil-trash-alt`}
                                 validation={{
-                                    required: 'Это поле обязательное',
+                                    required: true,
                                 }}
                             />
                         )}

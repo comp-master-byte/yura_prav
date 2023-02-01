@@ -16,9 +16,9 @@ export default class Lawyer {
         this.lawyerHelp = help;
     }
 
-    async getPreviousLawyerHelp() {
+    async getPreviousLawyerHelp(returnId = 2) {
         try {
-            const data = await LawyerService.getLawyerNode(this.nodeIdStack[this.nodeIdStack.length - 2]);
+            const data = await LawyerService.getLawyerNode(this.nodeIdStack[this.nodeIdStack.length - returnId]);
             const newData = {
                 ...data,
                 answers: data.answers ? Object.entries(data.answers) : []
