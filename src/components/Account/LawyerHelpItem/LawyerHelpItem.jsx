@@ -10,16 +10,15 @@ const LawyerHelpItem = () => {
 
     return (
         <div className={styles.lawyerHelpItem}>
-            <header className={classNames(styles.lawyerHelpHeader, {
-                [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length
-            })}>
+            <header className={styles.lawyerHelpHeader}>
                 <h2 className={styles.lawyerHelpHeader__text}>{lawyer.lawyerHelp.message}</h2>
             </header>
-            <main className={styles.lawyerHelperAnswers}>
+            <main className={classNames(styles.lawyerHelperAnswers, {
+                [styles.withoutMarginBottom]: lawyer.lawyerHelp?.node_id === "1"
+            })}>
                 {lawyer.lawyerHelp?.answers?.map((answer, index) =>
                     parseInt(answer[0]) === 1000 ? 
-                        // <UIInput
-                        <div>dd</div>
+                        <></>
                     :
                         <div 
                             key={index} 

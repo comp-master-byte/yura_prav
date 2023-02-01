@@ -11,10 +11,6 @@
         }
     }
 
-    .withoutMarginBottom {
-        margin-bottom: 0;
-    }
-
     .lawyerHelperAnswers {
         display: flex;
         align-items: center;
@@ -44,5 +40,9 @@
                 color: #fff;
             }
         }
+    }
+
+    .withoutMarginBottom {
+        margin-bottom: 0;
     }
 }
