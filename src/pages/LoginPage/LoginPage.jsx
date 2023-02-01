@@ -6,12 +6,14 @@ import { useLogin } from '../../hooks/auth/useLogin';
 import { EMAIL_REGEX } from '../../utils/regexExp';
 import classNames from "classnames";
 import {observer} from "mobx-react-lite";
+import { ToastContainer } from 'react-toastify';
 
 const LoginPage = () => {
     const {register, handleSubmit, onSubmit, errors, store, togglePasswordVisibility, isPasswordVisible} = useLogin();
 
     return (
         <div className={styles.loginPage}>
+            <ToastContainer />
             <span className={styles.title}>Вход</span>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <UIInput 

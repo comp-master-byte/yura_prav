@@ -81,7 +81,12 @@ export default class Store {
             this.setAuth(true);
             callback();
         } catch(e) {
-            console.log(e);
+            toast(e.response.data.non_field_errors[0], {
+                type: 'error',
+                position: 'top-right',
+                pauseOnHover: true,
+                autoClose: 2000
+            })
         } finally {
             this.setIsLoading(false);
             this.setLoginBtnText('Войти');
@@ -103,11 +108,14 @@ export default class Store {
             this.setRegisterBtnText('Переносим на вход...');
             await callback();
         } catch(e) {
-            toast('Произошла какая-то ошибка', {
-                type: 'error',
-                position: 'top-right',
-                pauseOnHover: true,
-                autoClose: 5000
+            const errorKey = Object.keys(e.response.data)[0];
+            e.response.data[errorKey].forEach(error => {
+                toast(error, {
+                    type: 'error',
+                    position: 'top-right',
+                    pauseOnHover: true,
+                    autoClose: 5000
+                })
             })
             this.setRegisterBtnText('Зарегестрироваться');
             this.setIsLoading(false);
