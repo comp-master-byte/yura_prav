@@ -17,6 +17,13 @@ export default class Lawyer {
         this.lawyerHelp = help;
     }
 
+    setLawyerHelpAnswers(newAnswer) {
+        this.lawyerHelp = {
+            ...this.lawyerHelp,
+            answers: [...this.lawyerHelp.answers, newAnswer]
+        }
+    }
+
     async createLawyerQuestion(id = 2) {
         try {
             const response = CreateQuestionService.createQuestion(id);

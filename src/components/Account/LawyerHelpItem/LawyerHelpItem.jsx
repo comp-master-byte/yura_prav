@@ -5,6 +5,8 @@ import { observer } from "mobx-react-lite";
 import { Context}  from "../../../index"
 import classNames from 'classnames';
 import UIButton from '../../../UI/UIButton/UIButton';
+import AddLawyerItemButton from '../AddLawyerItemButton/AddLawyerItemButton';
+import { toJS } from 'mobx';
 
 const LawyerHelpItem = () => {
     const {lawyer} = useContext(Context);
@@ -22,6 +24,8 @@ const LawyerHelpItem = () => {
             navigate(`/lk/account/${answer[1]}`)
         }
     }
+
+    console.log(toJS(lawyer.lawyerHelp?.answers))
 
     return (
         <div className={styles.lawyerHelpItem}>
@@ -45,11 +49,16 @@ const LawyerHelpItem = () => {
                             {answer[0]}
                         </div>
                 )}
+                <AddLawyerItemButton />
             </main>
-            {lawyer.lawyerHelp?.node_id !== "1" && <UIButton onClick={() => {
-                lawyer.getPreviousLawyerHelp(1);
-                navigate(-1);
-            }}>Назад</UIButton>}
+            {lawyer.lawyerHelp?.node_id !== "1" && 
+                <UIButton onClick={() => {
+                    lawyer.getPreviousLawyerHelp(1);
+                    navigate(-1);
+                }}>
+                    Назад
+                </UIButton>
+            }
         </div>
     )
 }
