@@ -10,6 +10,7 @@ export const useGenerateQuestion = () => {
     const {register, formState: {errors}, handleSubmit} = useForm();
 
     const navigate = useNavigate();
+    const nodeIdStack = JSON.parse(localStorage.getItem('nodeIdStack'))
 
     const [selectQuestionOrAnswer, setSelectQuestionOrAnswer] = useState('');
     const [answersList, setAnswersList] = useState([
@@ -18,7 +19,7 @@ export const useGenerateQuestion = () => {
 
     const returnToPreviousQuestion = () => {
         lawyer.getPreviousLawyerHelp(1);
-        navigate('/lk/account');
+        navigate(-1)
     }
 
     const addAnswerToTheList = (e) => {
@@ -40,9 +41,7 @@ export const useGenerateQuestion = () => {
     }
 
     const onSubmit = (data) => {
-        console.log(data);
         console.log(answersList);
-
         lawyer.createLawyerQuestion();
     }
 

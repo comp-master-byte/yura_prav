@@ -26,15 +26,22 @@ export default class Lawyer {
         }
     }
 
-    async getPreviousLawyerHelp(returnId = 2) {
+    async getPreviousLawyerHelp(returnId) {
         try {
-            const data = await LawyerService.getLawyerNode(this.nodeIdStack[this.nodeIdStack.length - returnId]);
+            const stack = JSON.parse(localStorage.getItem('nodeIdStack'));
+            const data = await LawyerService.getLawyerNode(stack[stack.length - 2]);
             const newData = {
                 ...data,
                 answers: data.answers ? Object.entries(data.answers) : []
             }
             this.setLawyerHelp(newData);
             this.nodeIdStack.pop();
+            stack.pop();
+            if(!stack.length) {
+                stack.shift(1);
+            }
+            const toStringStack = JSON.stringify(stack);
+            localStorage.setItem('nodeIdStack', toStringStack)
         } catch(e) {
             console.log(e.response.data);
         }
@@ -47,7 +54,9 @@ export default class Lawyer {
                 ...data,
                 answers: data.answers ? Object.entries(data.answers) : []
             }
-            this.nodeIdStack.push(newData.node_id)
+            this.nodeIdStack.push(newData.node_id);
+            const toStringStack = JSON.stringify(this.nodeIdStack);
+            localStorage.setItem('nodeIdStack', toStringStack);
             this.setLawyerHelp(newData);
         } catch(error) {
             console.log(error.response.data);

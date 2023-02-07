@@ -3,7 +3,7 @@ import GenerateQuestionPage from "../pages/lk/GenerateQuestionPage/GenerateQuest
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 
 export const privateRoutes = [
-    {path: 'account', component: <AccountPage />},
+    {path: 'account/:id', component: <AccountPage />},
     {path: 'generate-question', component: <GenerateQuestionPage />}
 ]
 

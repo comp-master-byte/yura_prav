@@ -19,7 +19,7 @@ const AppRouter = () => {
                         <Route key={route.path} path={route.path} element={route.component} />
                     )}
                 </Route>
-                <Route path="*" element={<Navigate to="/lk/account" replace />} />  replace - чтобы почистить историю браузера
+                <Route path="*" element={<Navigate to="/lk/account/1" replace />} />  replace - чтобы почистить историю браузера
             </Routes>
         :
             <Routes> {/*Тут только те роуты, где пользователь еще не авторизован и лк ему недоступен*/}

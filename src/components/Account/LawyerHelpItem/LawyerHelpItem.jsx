@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import styles from "./LawyerHelpItem.module.scss";
-import {observer} from "mobx-react-lite";
-import {Context} from "../../../index"
+import { useNavigate } from 'react-router-dom';
+import { observer } from "mobx-react-lite";
+import { Context}  from "../../../index"
 import classNames from 'classnames';
 import UIButton from '../../../UI/UIButton/UIButton';
-import { useNavigate } from 'react-router-dom';
 
 const LawyerHelpItem = () => {
     const {lawyer} = useContext(Context);
@@ -13,8 +13,13 @@ const LawyerHelpItem = () => {
     const onSelectAnswer = (answer) => {
         if(answer[1] === 101) {
             navigate('/lk/generate-question')
+            const stack = JSON.parse(localStorage.getItem('nodeIdStack'));
+            stack.push(100);
+            const toStringStack = JSON.stringify(stack);
+            localStorage.setItem('nodeIdStack', toStringStack);
         } else {
             lawyer.getSelectedLawyerHelp(answer[1])
+            navigate(`/lk/account/${answer[1]}`)
         }
     }
 
@@ -41,7 +46,10 @@ const LawyerHelpItem = () => {
                         </div>
                 )}
             </main>
-            {lawyer.lawyerHelp?.node_id !== "1" && <UIButton onClick={() => lawyer.getPreviousLawyerHelp()}>Назад</UIButton>}
+            {lawyer.lawyerHelp?.node_id !== "1" && <UIButton onClick={() => {
+                lawyer.getPreviousLawyerHelp(1);
+                navigate(-1);
+            }}>Назад</UIButton>}
         </div>
     )
 }
