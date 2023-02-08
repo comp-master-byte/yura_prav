@@ -8,21 +8,35 @@ import UIOutlinedInput from '../../../UI/UIOutlinedInput/UIOutlinedInput';
 import { useLawyerHelpItem } from './hooks/useLawyerHelpItem';
 
 const LawyerHelpItem = () => {
-    const {register, lawyer, onSelectAnswer, goBack, handleSubmit, onSubmit, isAnswersDisabled, toggleAnswersDisabled} = useLawyerHelpItem()
+    const {
+        register, 
+        lawyer, 
+        onSelectAnswer, 
+        goBack, 
+        handleSubmit, 
+        onSubmit, 
+        isAnswersDisabled, 
+        toggleAnswersDisabled
+    } = useLawyerHelpItem();
 
     return (
-        <form className={styles.lawyerHelpItem}>
+        <div className={styles.lawyerHelpItem}>
             <header className={classNames(styles.lawyerHelpHeader, {
                 [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length
             })}>
-                <h2 className={styles.lawyerHelpHeader__text}>{lawyer.lawyerHelp.message}</h2>
+                <UIOutlinedInput 
+                    name="title"
+                    register={register}
+                    disabled={isAnswersDisabled}
+                    disabledText
+                />
             </header>
             <main onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelperAnswers}>
                 {lawyer.lawyerHelp?.answers?.map((answer, index) =>
                     parseInt(answer[0]) === 1000 ? 
                         <React.Fragment key={index}></React.Fragment>
                     :
-                        <div key={index} className={styles.lawyerHelperAnswer}>
+                        <div onClick={() => isAnswersDisabled && onSelectAnswer(answer)} key={index} className={styles.lawyerHelperAnswer}>
                             <UIOutlinedInput 
                                 name={answer[0]}
                                 register={register}
@@ -38,17 +52,9 @@ const LawyerHelpItem = () => {
                 </UIButton>
             }
             <UIButton customClassName={styles.marginRigth} onClick={(e) => toggleAnswersDisabled(e)}>{isAnswersDisabled ? 'Редактировать' : 'Отменить редактирование'}</UIButton>
-            {!isAnswersDisabled && <UIButton>Сохранить изменения</UIButton>}
-        </form>
+            {!isAnswersDisabled && <UIButton type="submit">Сохранить изменения</UIButton>}
+        </div>
     )
 }
 
 export default observer(LawyerHelpItem);
-
-// <div 
-                        //     key={index} 
-                        //     onClick={() => onSelectAnswer(answer)} 
-                        //     className={styles.lawyerHelperAnswer}
-                        // >
-                        //     {answer[0]}
-                        // </div>

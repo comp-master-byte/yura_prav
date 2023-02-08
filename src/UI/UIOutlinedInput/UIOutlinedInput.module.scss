@@ -42,6 +42,18 @@
             color: #fff;
         }
     }
+
+    .disabledText:disabled {
+        background-color: none;
+        color:#003878;
+        filter: none;
+
+        &:hover {
+            transform: none;
+            transition: none;
+            filter:none;
+        }
+    }
 }
 
 .errorOutlindeInputWrapper {

@@ -19,7 +19,7 @@ export const useAddLawyerItemButton = () => {
         const modifiedData = [data.new_answer, '0000'];
         lawyer.setLawyerHelpAnswers(modifiedData);
         setIsEdit(false);
-        reset({})
+        reset({});
     }
 
     return {

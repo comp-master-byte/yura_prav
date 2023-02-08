@@ -19,9 +19,8 @@ const AddLawyerItemButton = () => {
                             required: 'Это поле не может быть пустым!'
                         }}
                         placeholder="Добавить ваш ответ..."
-                        disabled
                     />
-                    <button className={styles.editWrapperSendBtn}>
+                    <button type="submit" className={styles.editWrapperSendBtn}>
                         <i className="uil uil-message"></i>
                     </button>
                     <div onClick={toggleEdition} className={styles.cancelWrapperSendBtn}>

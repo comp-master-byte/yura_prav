@@ -6,6 +6,11 @@
 
     .lawyerHelpHeader {
         margin-bottom: 30px;
+        
+        input {
+            font-size: 28px;
+            width: 100%;
+        }
         .lawyerHelpHeader__text {
             color: #003878;
         }

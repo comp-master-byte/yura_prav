@@ -44,10 +44,10 @@ export const useLawyerHelpItem = () => {
             lawyer.lawyerHelp?.answers.forEach((item) => {
                 stack.push({[item[0]]: item[0]})
             })
-            let reassignStack = Object.assign({}, ...stack);
+            let reassignStack = Object.assign({}, ...stack, {title: lawyer.lawyerHelp.message});
             reset(reassignStack);
         }
-    }, [lawyer.lawyerHelp?.answers])
+    }, [lawyer.lawyerHelp])
 
     return {
         register,
