@@ -20,7 +20,7 @@ const LawyerHelpItem = () => {
     } = useLawyerHelpItem();
 
     return (
-        <div className={styles.lawyerHelpItem}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelpItem}>
             <header className={classNames(styles.lawyerHelpHeader, {
                 [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length
             })}>
@@ -31,7 +31,7 @@ const LawyerHelpItem = () => {
                     disabledText
                 />
             </header>
-            <main onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelperAnswers}>
+            <main className={styles.lawyerHelperAnswers}>
                 {lawyer.lawyerHelp?.answers?.map((answer, index) =>
                     parseInt(answer[0]) === 1000 ? 
                         <React.Fragment key={index}></React.Fragment>
@@ -53,7 +53,7 @@ const LawyerHelpItem = () => {
             }
             <UIButton customClassName={styles.marginRigth} onClick={(e) => toggleAnswersDisabled(e)}>{isAnswersDisabled ? 'Редактировать' : 'Отменить редактирование'}</UIButton>
             {!isAnswersDisabled && <UIButton type="submit">Сохранить изменения</UIButton>}
-        </div>
+        </form>
     )
 }
 

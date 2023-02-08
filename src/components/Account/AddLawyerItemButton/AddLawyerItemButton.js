@@ -10,7 +10,7 @@ const AddLawyerItemButton = () => {
                 <i className="uil uil-plus"></i>
             </div>}
             {isEdit && 
-                <form onSubmit={handleSubmit(onSubmit)} className={styles.editWrapper}>
+                <div onSubmit={handleSubmit(onSubmit)} className={styles.editWrapper}>
                     <UIOutlinedInput 
                         name="new_answer"
                         register={register}
@@ -26,7 +26,7 @@ const AddLawyerItemButton = () => {
                     <div onClick={toggleEdition} className={styles.cancelWrapperSendBtn}>
                         <i className="uil uil-cancel"></i>
                     </div>
-                </form>
+                </div>
             }
         </div>
     )

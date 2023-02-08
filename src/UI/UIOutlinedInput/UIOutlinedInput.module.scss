@@ -47,11 +47,13 @@
         background-color: none;
         color:#003878;
         filter: none;
+        pointer-events: none;
+        font-weight: 700;
+        font-size: 32px;
 
         &:hover {
             transform: none;
             transition: none;
-            filter:none;
         }
     }
 }

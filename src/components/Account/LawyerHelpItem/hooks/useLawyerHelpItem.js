@@ -1,17 +1,31 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../..";
+import LawyerService from "../../../../services/LawyerService";
 
 export const useLawyerHelpItem = () => {
     const {lawyer} = useContext(Context);
     const {register, reset, handleSubmit} = useForm();
     const navigate = useNavigate();
+    const {id} = useParams();
+
 
     const [isAnswersDisabled, setIsAnswersDisabled] = useState(true);
 
     const onSubmit = (data) => {
-        console.log(data);
+        if('title' in data) {
+            LawyerService.editLawyerMessage(id, {new_message: data.title});
+        }
+        delete data.title;
+        const result = Object.entries(data).map(entry => ({[entry[0]]: entry[1]}));
+        result.forEach(async (item, index) => {
+            const previous_answer = Object.keys(item);
+            const new_answer = Object.values(item);
+            if(previous_answer[0] !== new_answer[0]) {
+                await LawyerService.editLawyerAnswer(id, {previous_answer: previous_answer[0], new_answer: new_answer[0]})
+            }
+        })
     }
 
     const toggleAnswersDisabled = (e) => {

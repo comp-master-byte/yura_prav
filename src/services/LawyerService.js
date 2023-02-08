@@ -14,4 +14,22 @@ export default class LawyerService {
             console.log(e);
         }
     }
+    
+    static async editLawyerAnswer(id, data) {
+        try {
+            const response = await $api.put(`/api/${id}/edit_answer`);
+            return response.data;
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
+    static async editLawyerMessage(id, data) {
+        try {
+            const response = await $api.put(`/api/${id}/edit_message`, data);
+            return response.data;
+        } catch(e) {
+            console.log(e);
+        }
+    }
 }
