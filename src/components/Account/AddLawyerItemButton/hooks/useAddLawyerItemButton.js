@@ -4,9 +4,12 @@ import LawyerService from "../../../../services/LawyerService";
 import {Context} from "../../../../index"
 
 export const useAddLawyerItemButton = () => {
+    const {id} = useParams();
+
     const {lawyer} = useContext(Context);
     const [newAnswerValue, setNewAnswerValue] = useState('');
     const [answerValueError, setAnswerValueError] = useState('');
+    const [isEdit, setIsEdit] = useState(false);
 
     const newAnswerValueHandler = (e) => {
         const message = e.target.value;
@@ -17,10 +20,6 @@ export const useAddLawyerItemButton = () => {
             setAnswerValueError('Поле не может быть пустым!');
         }
     };
-
-    const {id} = useParams();
-
-    const [isEdit, setIsEdit] = useState(false);
 
     const toggleEdition = () => setIsEdit(prev => !prev);
 

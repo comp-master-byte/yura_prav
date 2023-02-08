@@ -1,10 +1,12 @@
 import { makeObservable, observable, action } from "mobx";
 import CreateQuestionService from "../services/CreateQuestionService";
 import LawyerService from "../services/LawyerService";
+import {toast} from "react-toastify";
 
 export default class Lawyer {
     lawyerHelp = {}; // Хранит в себе данные вопросов/ответов
     nodeIdStack = []; // Хранит в себе все node_id 
+    isCreateQuestionLoading = false
     
     constructor() {
         makeObservable(this, {
@@ -24,12 +26,22 @@ export default class Lawyer {
         }
     }
 
-    async createLawyerQuestion(id = 2) {
+    setIsCreateQuestionLoading(bool) {
+        this.isCreateQuestionLoading = bool;
+    }
+
+    async createLawyerQuestion(id, data) {
         try {
-            const response = CreateQuestionService.createQuestion(id);
-            console.log(response);
+            this.setIsCreateQuestionLoading(true);
+            const response = CreateQuestionService.createQuestion(id, data);
+            toast('Данные успешно отправлены!', {
+                type: 'success',
+                position: 'top-right'
+            })
         } catch(e) {
             console.log(e.response.data);
+        } finally {
+            this.setIsCreateQuestionLoading(false);
         }
     }
 

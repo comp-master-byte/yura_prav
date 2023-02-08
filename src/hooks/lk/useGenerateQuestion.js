@@ -1,25 +1,24 @@
 import { useContext } from "react";
 import { useState } from "react";
 import {useForm} from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {Context} from "../../index"
 
 export const useGenerateQuestion = () => {
     const {lawyer} = useContext(Context);
+    const location = useLocation();
 
-    const {register, formState: {errors}, handleSubmit} = useForm();
+    const {register, formState: {errors}, handleSubmit, reset} = useForm();
 
     const navigate = useNavigate();
-    const nodeIdStack = JSON.parse(localStorage.getItem('nodeIdStack'))
 
-    const [selectQuestionOrAnswer, setSelectQuestionOrAnswer] = useState('');
-    const [answersList, setAnswersList] = useState([
-        {id: 1, name: 'answer'}
-    ])
+    const [selectQuestionOrAnswer, setSelectQuestionOrAnswer] = useState('a');
+    const [answersList, setAnswersList] = useState([{id: 1, name: 'answer'}]);
 
     const returnToPreviousQuestion = () => {
         lawyer.getPreviousLawyerHelp(1);
-        navigate(-1)
+        navigate(-1);
     }
 
     const addAnswerToTheList = (e) => {
@@ -30,8 +29,7 @@ export const useGenerateQuestion = () => {
             id: nextElement,
             name: `answer_${nextElement}`
         }
-
-        setAnswersList([...answersList, newAnswer])
+        setAnswersList([...answersList, newAnswer]);
     }
 
     const deleteSelectedAnswer = (e, id) => {
@@ -41,8 +39,23 @@ export const useGenerateQuestion = () => {
     }
 
     const onSubmit = (data) => {
-        console.log(answersList);
-        lawyer.createLawyerQuestion();
+        const answers = [];
+        answersList.forEach((item) => {
+            answers.push(item.name);
+        })
+
+        const submitData = {
+            message: data.message,
+            q_or_a: selectQuestionOrAnswer,
+            answers: selectQuestionOrAnswer === 'q' ? answers : '',
+            previous_answer: 'Заработная плата'
+        }
+    
+        lawyer.createLawyerQuestion(2, submitData);
+        // очистка полей после отправки сообщения
+        setSelectQuestionOrAnswer([]);
+        setSelectQuestionOrAnswer('a');
+        reset({message: ''});
     }
 
     return {
