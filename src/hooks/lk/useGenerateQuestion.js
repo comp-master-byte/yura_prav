@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useState } from "react";
 import {useForm} from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import {Context} from "../../index"
 
 export const useGenerateQuestion = () => {
@@ -48,7 +47,7 @@ export const useGenerateQuestion = () => {
             message: data.message,
             q_or_a: selectQuestionOrAnswer,
             answers: selectQuestionOrAnswer === 'q' ? answers : '',
-            previous_answer: 'Заработная плата'
+            previous_answer: location.state
         }
     
         lawyer.createLawyerQuestion(2, submitData);

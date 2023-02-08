@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../..";
 import LawyerService from "../../../../services/LawyerService";
@@ -10,6 +10,7 @@ export const useLawyerHelpItem = () => {
     const {register, reset, handleSubmit} = useForm();
     const navigate = useNavigate();
     const {id} = useParams();
+    const location = useLocation();
 
     const [isAnswersDisabled, setIsAnswersDisabled] = useState(true);
 
@@ -40,14 +41,14 @@ export const useLawyerHelpItem = () => {
 
     const onSelectAnswer = (answer) => {
         if(answer[1] === 101) {
-            navigate('/lk/generate-question')
+            navigate('/lk/generate-question', {state: location.state})
             const stack = JSON.parse(localStorage.getItem('nodeIdStack'));
             stack.push(100);
             const toStringStack = JSON.stringify(stack);
             localStorage.setItem('nodeIdStack', toStringStack);
         } else {
             lawyer.getSelectedLawyerHelp(answer[1])
-            navigate(`/lk/account/${answer[1]}`)
+            navigate(`/lk/account/${answer[1]}`, {state: answer[0]})
         }
     }
 
