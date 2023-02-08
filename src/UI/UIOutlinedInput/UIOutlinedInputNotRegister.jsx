@@ -1,8 +1,11 @@
 import styles from "./UIOutlinedInput.module.scss";
+import classNames from "classnames";
 
-const UIOutlinedInputNotRegister = ({placeholder, disabled, value, onChange}) => {
+const UIOutlinedInputNotRegister = ({placeholder, disabled, value, onChange, error}) => {
     return (
-        <div className={styles.outlinedInputWrapper}>
+        <div className={classNames(styles.outlinedInputWrapper, {
+            [styles.errorOutlindeInputWrapper]: error,
+        })}>
             <input 
                 value={value}
                 onChange={onChange}
@@ -10,6 +13,7 @@ const UIOutlinedInputNotRegister = ({placeholder, disabled, value, onChange}) =>
                 disabled={disabled}
                 className={styles.outlinedInput}
             />
+            {error && <div className={styles.outlinedInputError}>{error}</div>}
         </div>
     )
 }

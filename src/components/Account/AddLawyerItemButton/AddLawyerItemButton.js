@@ -8,7 +8,8 @@ const AddLawyerItemButton = () => {
         toggleEdition, 
         newAnswerValueHandler,
         newAnswerValue,
-        onSubmit
+        onSubmit,
+        answerValueError
     } = useAddLawyerItemButton();
     return (
         <div className={styles.wrapper}>
@@ -22,6 +23,7 @@ const AddLawyerItemButton = () => {
                         name="new_answer"
                         value={newAnswerValue}
                         onChange={newAnswerValueHandler}
+                        error={answerValueError}
                     />
                     <div onClick={onSubmit} className={styles.editWrapperSendBtn}>
                         <i className="uil uil-message"></i>

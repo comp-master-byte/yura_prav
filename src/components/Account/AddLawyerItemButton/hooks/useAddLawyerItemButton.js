@@ -6,8 +6,17 @@ import {Context} from "../../../../index"
 export const useAddLawyerItemButton = () => {
     const {lawyer} = useContext(Context);
     const [newAnswerValue, setNewAnswerValue] = useState('');
+    const [answerValueError, setAnswerValueError] = useState('');
 
-    const newAnswerValueHandler = (e) => setNewAnswerValue(e.target.value);
+    const newAnswerValueHandler = (e) => {
+        const message = e.target.value;
+        setNewAnswerValue(message);
+        if(message) {
+            setAnswerValueError('')
+        } else {
+            setAnswerValueError('Поле не может быть пустым!');
+        }
+    };
 
     const {id} = useParams();
 
@@ -16,10 +25,14 @@ export const useAddLawyerItemButton = () => {
     const toggleEdition = () => setIsEdit(prev => !prev);
 
     const onSubmit = () => {
-        LawyerService.addNewLawyerAnswer(id, {new_answer: newAnswerValue});
-        const modifiedData = [newAnswerValue, '0000'];
-        lawyer.setLawyerHelpAnswers(modifiedData);
-        setIsEdit(false);
+        if(!newAnswerValue) {
+            setAnswerValueError('Поле не может быть пустым!');
+        } else {
+            LawyerService.addNewLawyerAnswer(id, {new_answer: newAnswerValue});
+            const modifiedData = [newAnswerValue, '0000'];
+            lawyer.setLawyerHelpAnswers(modifiedData);
+            setIsEdit(false);
+        }
     }
 
     return {
@@ -27,6 +40,7 @@ export const useAddLawyerItemButton = () => {
         toggleEdition,
         onSubmit,
         newAnswerValueHandler,
-        newAnswerValue
+        newAnswerValue,
+        answerValueError
     }
 }
