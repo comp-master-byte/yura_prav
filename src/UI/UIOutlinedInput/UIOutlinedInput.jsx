@@ -1,7 +1,7 @@
 import styles from "./UIOutlinedInput.module.scss";
 import classNames from "classnames";
 
-const UIOutlinedInput = ({register, name, placeholder, disabled, validation, error}) => {
+const UIOutlinedInput = ({register, name, placeholder, disabled, validation, error, value}) => {
     return (
         <div className={classNames(styles.outlinedInputWrapper, {
             [styles.errorOutlindeInputWrapper]: error?.message

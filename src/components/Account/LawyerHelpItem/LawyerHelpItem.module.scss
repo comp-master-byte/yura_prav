@@ -22,24 +22,15 @@
 
         .lawyerHelperAnswer {
             flex: 1 0 auto;
-            color: #003878;
-            font-size: 20px;
-            font-weight: 500;
-            background-color: #fff;
-            filter: drop-shadow(0px 0px 3px #003878);
-            border-radius: 10px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all .25s;
 
-            &:hover {
-                transform: translateY(-15px);
-                transition: all .25s;
-                filter: drop-shadow(0px 0px 8px #003878);
-                background-color: #003878;
-                color: #fff;
+            input {
+                width: 100%;
             }
         }
+    }
+
+    .marginRigth {
+        margin-right: 10px;
     }
 
     .withoutMarginBottom {

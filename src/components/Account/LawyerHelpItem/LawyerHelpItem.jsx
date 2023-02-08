@@ -1,66 +1,54 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from "./LawyerHelpItem.module.scss";
-import { useNavigate } from 'react-router-dom';
 import { observer } from "mobx-react-lite";
-import { Context}  from "../../../index"
 import classNames from 'classnames';
 import UIButton from '../../../UI/UIButton/UIButton';
 import AddLawyerItemButton from '../AddLawyerItemButton/AddLawyerItemButton';
-import { toJS } from 'mobx';
+import UIOutlinedInput from '../../../UI/UIOutlinedInput/UIOutlinedInput';
+import { useLawyerHelpItem } from './hooks/useLawyerHelpItem';
 
 const LawyerHelpItem = () => {
-    const {lawyer} = useContext(Context);
-    const navigate = useNavigate();
-
-    const onSelectAnswer = (answer) => {
-        if(answer[1] === 101) {
-            navigate('/lk/generate-question')
-            const stack = JSON.parse(localStorage.getItem('nodeIdStack'));
-            stack.push(100);
-            const toStringStack = JSON.stringify(stack);
-            localStorage.setItem('nodeIdStack', toStringStack);
-        } else {
-            lawyer.getSelectedLawyerHelp(answer[1])
-            navigate(`/lk/account/${answer[1]}`)
-        }
-    }
-
-    console.log(toJS(lawyer.lawyerHelp?.answers))
+    const {register, lawyer, onSelectAnswer, goBack, handleSubmit, onSubmit, isAnswersDisabled, toggleAnswersDisabled} = useLawyerHelpItem()
 
     return (
-        <div className={styles.lawyerHelpItem}>
+        <form className={styles.lawyerHelpItem}>
             <header className={classNames(styles.lawyerHelpHeader, {
                 [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length
             })}>
                 <h2 className={styles.lawyerHelpHeader__text}>{lawyer.lawyerHelp.message}</h2>
             </header>
-            <main className={classNames(styles.lawyerHelperAnswers, {
-                [styles.withoutMarginBottom]: lawyer.lawyerHelp?.node_id === "1"
-            })}>
+            <main onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelperAnswers}>
                 {lawyer.lawyerHelp?.answers?.map((answer, index) =>
                     parseInt(answer[0]) === 1000 ? 
                         <React.Fragment key={index}></React.Fragment>
                     :
-                        <div 
-                            key={index} 
-                            onClick={() => onSelectAnswer(answer)} 
-                            className={styles.lawyerHelperAnswer}
-                        >
-                            {answer[0]}
+                        <div key={index} className={styles.lawyerHelperAnswer}>
+                            <UIOutlinedInput 
+                                name={answer[0]}
+                                register={register}
+                                disabled={isAnswersDisabled}
+                            />
                         </div>
                 )}
                 <AddLawyerItemButton />
             </main>
             {lawyer.lawyerHelp?.node_id !== "1" && 
-                <UIButton onClick={() => {
-                    lawyer.getPreviousLawyerHelp(1);
-                    navigate(-1);
-                }}>
+                <UIButton customClassName={styles.marginRigth} onClick={(e) => goBack(e)}>
                     Назад
                 </UIButton>
             }
-        </div>
+            <UIButton customClassName={styles.marginRigth} onClick={(e) => toggleAnswersDisabled(e)}>{isAnswersDisabled ? 'Редактировать' : 'Отменить редактирование'}</UIButton>
+            {!isAnswersDisabled && <UIButton>Сохранить изменения</UIButton>}
+        </form>
     )
 }
 
 export default observer(LawyerHelpItem);
+
+// <div 
+                        //     key={index} 
+                        //     onClick={() => onSelectAnswer(answer)} 
+                        //     className={styles.lawyerHelperAnswer}
+                        // >
+                        //     {answer[0]}
+                        // </div>
