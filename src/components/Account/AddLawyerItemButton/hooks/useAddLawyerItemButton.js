@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import LawyerService from "../../../../services/LawyerService";
 import {Context} from "../../../../index"
 
 export const useAddLawyerItemButton = () => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
-    const {lawyer} = useContext(Context)
+    const {lawyer} = useContext(Context);
+    const [newAnswerValue, setNewAnswerValue] = useState('');
+
+    const newAnswerValueHandler = (e) => setNewAnswerValue(e.target.value);
 
     const {id} = useParams();
 
@@ -14,20 +15,18 @@ export const useAddLawyerItemButton = () => {
 
     const toggleEdition = () => setIsEdit(prev => !prev);
 
-    const onSubmit = (data) => {
-        LawyerService.addNewLawyerAnswer(id, data);
-        const modifiedData = [data.new_answer, '0000'];
+    const onSubmit = () => {
+        LawyerService.addNewLawyerAnswer(id, {new_answer: newAnswerValue});
+        const modifiedData = [newAnswerValue, '0000'];
         lawyer.setLawyerHelpAnswers(modifiedData);
         setIsEdit(false);
-        reset({});
     }
 
     return {
-        register,
         isEdit,
         toggleEdition,
-        handleSubmit,
         onSubmit,
-        errors
+        newAnswerValueHandler,
+        newAnswerValue
     }
 }

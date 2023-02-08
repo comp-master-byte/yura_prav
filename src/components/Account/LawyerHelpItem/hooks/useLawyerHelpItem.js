@@ -3,13 +3,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../../..";
 import LawyerService from "../../../../services/LawyerService";
+import { toast } from "react-toastify";
 
 export const useLawyerHelpItem = () => {
     const {lawyer} = useContext(Context);
     const {register, reset, handleSubmit} = useForm();
     const navigate = useNavigate();
     const {id} = useParams();
-
 
     const [isAnswersDisabled, setIsAnswersDisabled] = useState(true);
 
@@ -26,6 +26,11 @@ export const useLawyerHelpItem = () => {
                 await LawyerService.editLawyerAnswer(id, {previous_answer: previous_answer[0], new_answer: new_answer[0]})
             }
         })
+        toast('Редактирование прошло успешно', {
+            type: 'success',
+            position: 'top-right'
+        })
+        setIsAnswersDisabled(true);
     }
 
     const toggleAnswersDisabled = (e) => {

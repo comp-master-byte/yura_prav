@@ -1,28 +1,31 @@
-import UIOutlinedInput from "../../../UI/UIOutlinedInput/UIOutlinedInput";
+import UIOutlinedInputNotRegister from "../../../UI/UIOutlinedInput/UIOutlinedInputNotRegister";
 import styles from "./AddLawyerItemButton.module.scss";
 import { useAddLawyerItemButton } from "./hooks/useAddLawyerItemButton";
 
 const AddLawyerItemButton = () => {
-    const {register, isEdit, toggleEdition, handleSubmit, onSubmit, errors} = useAddLawyerItemButton();
+    const {
+        isEdit, 
+        toggleEdition, 
+        newAnswerValueHandler,
+        newAnswerValue,
+        onSubmit
+    } = useAddLawyerItemButton();
     return (
         <div className={styles.wrapper}>
             {!isEdit && <div onClick={() => toggleEdition()} className={styles.addLawyerBtn}>
                 <i className="uil uil-plus"></i>
             </div>}
             {isEdit && 
-                <div onSubmit={handleSubmit(onSubmit)} className={styles.editWrapper}>
-                    <UIOutlinedInput 
-                        name="new_answer"
-                        register={register}
-                        error={errors.new_answer}
-                        validation={{
-                            required: 'Это поле не может быть пустым!'
-                        }}
+                <div className={styles.editWrapper}>
+                    <UIOutlinedInputNotRegister 
                         placeholder="Добавить ваш ответ..."
+                        name="new_answer"
+                        value={newAnswerValue}
+                        onChange={newAnswerValueHandler}
                     />
-                    <button type="submit" className={styles.editWrapperSendBtn}>
+                    <div onClick={onSubmit} className={styles.editWrapperSendBtn}>
                         <i className="uil uil-message"></i>
-                    </button>
+                    </div>
                     <div onClick={toggleEdition} className={styles.cancelWrapperSendBtn}>
                         <i className="uil uil-cancel"></i>
                     </div>
