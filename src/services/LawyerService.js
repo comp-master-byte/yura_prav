@@ -17,7 +17,7 @@ export default class LawyerService {
     
     static async editLawyerAnswer(id, data) {
         try {
-            const response = await $api.put(`/api/${id}/edit_answer`);
+            const response = await $api.put(`/api/${id}/edit_answer`, data);
             return response.data;
         } catch(e) {
             console.log(e);

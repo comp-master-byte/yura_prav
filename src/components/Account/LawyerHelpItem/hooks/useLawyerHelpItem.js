@@ -20,7 +20,7 @@ export const useLawyerHelpItem = () => {
         }
         delete data.title;
         const result = Object.entries(data).map(entry => ({[entry[0]]: entry[1]}));
-        result.forEach(async (item, index) => {
+        result.forEach(async (item) => {
             const previous_answer = Object.keys(item);
             const new_answer = Object.values(item);
             if(previous_answer[0] !== new_answer[0]) {
