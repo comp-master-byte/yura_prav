@@ -71,7 +71,7 @@ const LoginPage = () => {
             
             <div className={styles.loginSignup}>
                 <span className={styles.text}>Нет аккаунта?</span>
-                <Link to="/signup" className={`${styles.text} ${styles.signupText}`}>Зарегестрируйтесь сейчас</Link>
+                <Link to="/signup" className={`${styles.text} ${styles.signupText}`}>Зарегистрируйтесь сейчас</Link>
             </div>
         </div>
         </>

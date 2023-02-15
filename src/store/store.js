@@ -8,7 +8,7 @@ export default class Store {
     isAuth = false;
     isLoading = false;
     isAccountPopupVisible = false;
-    registerBtnText = "Зарегестрироваться";
+    registerBtnText = "Зарегистрироваться";
     loginBtnText = "Войти";
 
     constructor() {
@@ -103,7 +103,7 @@ export default class Store {
             this.setIsLoading(true);
             this.setRegisterBtnText('Загрузка...');
             const response = await AuthService.registration(registrationData);
-            toast('Вы успешно зарегестрированны!', {
+            toast('Вы успешно зарегистрированны!', {
                 type: 'success',
                 position: 'top-right',
                 pauseOnHover: true,
@@ -122,7 +122,7 @@ export default class Store {
                     autoClose: 5000
                 })
             })
-            this.setRegisterBtnText('Зарегестрироваться');
+            this.setRegisterBtnText('Зарегистрироваться');
             this.setIsLoading(false);
         }
     }

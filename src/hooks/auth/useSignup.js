@@ -20,7 +20,7 @@ export const useSignup = () => {
         setTimeout(() => {
             navigate('/');  
             store.setIsLoading(false);
-            store.setRegisterBtnText('Зарегестрироваться'); 
+            store.setRegisterBtnText('Зарегистрироваться'); 
         }, 2000);
     } 
 

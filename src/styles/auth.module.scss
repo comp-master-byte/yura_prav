@@ -12,7 +12,7 @@
         bottom: 0;
         height: 3px;
         width: 30px;
-        background-color: $main-color;
+        background-color: $primary-color;
         border-radius: 25px;
     }
 }
@@ -37,7 +37,7 @@
     }
 
     input:is(:focus) {
-        border-bottom-color: $main-color;
+        border-bottom-color: $primary-color;
     }
 
     i {
@@ -59,7 +59,7 @@
     }
 
     input:is(:focus) ~ i {
-        color: $main-color;
+        color: $primary-color;
     }
 }
 
@@ -75,7 +75,7 @@
 
         input {
             margin: 0 8px 0 4px;
-            accent-color: $main-color;
+            accent-color: $primary-color;
         }
     }
 }
@@ -102,7 +102,7 @@
 
             input {
                 margin: 0 8px 0 4px;
-                accent-color: $main-color;
+                accent-color: $primary-color;
             }
         }
     }
@@ -118,7 +118,7 @@
         font-size: 17px;
         font-weight: 500;
         border-radius: 6px;
-        background-color: $main-color;
+        background-color: $primary-color;
         cursor: pointer;
         transition: all .25s;
         width: 100%;
@@ -144,7 +144,7 @@
     button {
         opacity: .6;
         &:hover {
-            background-color: $main-color;
+            background-color: $primary-color;
         }
     }
 }
@@ -165,7 +165,7 @@
 }
 
 a.text {
-    color: $main-color;
+    color: $primary-color;
     text-decoration: none;
 
     &:hover {

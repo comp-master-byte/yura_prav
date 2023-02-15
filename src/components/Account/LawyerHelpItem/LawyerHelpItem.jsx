@@ -21,6 +21,8 @@ const LawyerHelpItem = () => {
         errors
     } = useLawyerHelpItem();
 
+    console.log(toJS(lawyer.lawyerHelp));
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelpItem}>
             <header className={classNames(styles.lawyerHelpHeader, {
@@ -56,7 +58,7 @@ const LawyerHelpItem = () => {
                 )}
                 <AddLawyerItemButton />
             </main>
-            {lawyer.lawyerHelp?.node_id !== "1" && 
+            {lawyer.lawyerHelp?.node_id !== 1 && 
                 <UIButton customClassName={styles.marginRigth} onClick={(e) => goBack(e)}>
                     Назад
                 </UIButton>

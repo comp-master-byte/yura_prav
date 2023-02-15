@@ -5,7 +5,7 @@
     height: 64px;
     background-color: #fff;
     color: #003878;
-    filter: drop-shadow(0px 0px 3px $main-color);
+    filter: drop-shadow(0px 0px 3px $primary-color);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -17,8 +17,8 @@
     }
 
     &:hover {
-        filter: drop-shadow(0px 0px 8px $main-color);
-        background-color: $main-color;
+        filter: drop-shadow(0px 0px 8px $primary-color);
+        background-color: $primary-color;
         color: #fff;
         cursor: pointer;
         transform: translateY(-15px);
@@ -31,14 +31,14 @@
     .editWrapperSendBtn {
         margin-left: 10px;
         width: 64px;
-        color:$main-color;
+        color:$primary-color;
         background-color: #fff;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all .25s;
-        filter: drop-shadow(0px 0px 1px $main-color);
+        filter: drop-shadow(0px 0px 1px $primary-color);
         border: none;
         outline: none;
 
@@ -47,8 +47,8 @@
         }
 
         &:hover {
-            filter: drop-shadow(0px 0px 8px $main-color);
-            background-color: $main-color;
+            filter: drop-shadow(0px 0px 8px $primary-color);
+            background-color: $primary-color;
             color: #fff;
             cursor: pointer;
         }
