@@ -41,14 +41,14 @@ export const useLawyerHelpItem = () => {
 
     const onSelectAnswer = (answer) => {
         if(answer[1] === 101) {
-            navigate('/lk/generate-question', {state: location.state})
+            navigate('/lk/generate-question', {state: {id: location.state.id, data: location.state.data}})
             const stack = JSON.parse(localStorage.getItem('nodeIdStack'));
             stack.push(100);
             const toStringStack = JSON.stringify(stack);
             localStorage.setItem('nodeIdStack', toStringStack);
         } else {
             lawyer.getSelectedLawyerHelp(answer[1])
-            navigate(`/lk/account/${answer[1]}`, {state: answer[0]})
+            navigate(`/lk/account/${answer[1]}`, {state: {id, data: answer[0]}})
         }
     }
 

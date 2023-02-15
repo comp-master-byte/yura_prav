@@ -46,9 +46,9 @@ export const useGenerateQuestion = () => {
             message: data.message,
             q_or_a: selectQuestionOrAnswer,
             answers: selectQuestionOrAnswer === 'q' ? answers : '',
-            previous_answer: location.state
+            previous_answer: location.state.data
         }
-        lawyer.createLawyerQuestion(2, submitData);
+        lawyer.createLawyerQuestion(parseInt(location.state.id), submitData);
 
         // очистка полей после отправки сообщения
         setSelectQuestionOrAnswer([]);
