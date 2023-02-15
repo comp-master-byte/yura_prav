@@ -1,3 +1,5 @@
+@import "../styles/variables";
+
 .title {
     font-size: 27px;
     font-weight: 600;
@@ -10,7 +12,7 @@
         bottom: 0;
         height: 3px;
         width: 30px;
-        background-color: #003878;
+        background-color: $main-color;
         border-radius: 25px;
     }
 }
@@ -35,7 +37,7 @@
     }
 
     input:is(:focus) {
-        border-bottom-color: #003878;
+        border-bottom-color: $main-color;
     }
 
     i {
@@ -57,7 +59,7 @@
     }
 
     input:is(:focus) ~ i {
-        color: #003878;
+        color: $main-color;
     }
 }
 
@@ -73,7 +75,7 @@
 
         input {
             margin: 0 8px 0 4px;
-            accent-color: #003878;
+            accent-color: $main-color;
         }
     }
 }
@@ -100,7 +102,7 @@
 
             input {
                 margin: 0 8px 0 4px;
-                accent-color: #003878;
+                accent-color: $main-color;
             }
         }
     }
@@ -116,7 +118,7 @@
         font-size: 17px;
         font-weight: 500;
         border-radius: 6px;
-        background-color: #003878;
+        background-color: $main-color;
         cursor: pointer;
         transition: all .25s;
         width: 100%;
@@ -142,7 +144,7 @@
     button {
         opacity: .6;
         &:hover {
-            background-color: #003878;
+            background-color: $main-color;
         }
     }
 }
@@ -163,7 +165,7 @@
 }
 
 a.text {
-    color: #003878;
+    color: $main-color;
     text-decoration: none;
 
     &:hover {
@@ -185,13 +187,11 @@ a.text {
 // errors
 .checkboxError .genderTitle, 
 .checkboxError label {
-    color: #e36060;    
-}
-.checkboxError input {
+    color: $error-color;    
 }
 
 .customCheckboxError {
     font-size: 12px;
-    color: #e36060;
+    color: $error-color;
     margin-top: 2px;
 }

@@ -1,6 +1,6 @@
 import AccountPage from "../pages/lk/AccountPage/AccountPage";
 import GenerateQuestionPage from "../pages/lk/GenerateQuestionPage/GenerateQuestionPage";
-import SignUpPage from "../pages/SignUpPage/SignUpPage";
+import SignUpPage from "../pages/auth/SignUpPage/SignUpPage";
 
 export const privateRoutes = [
     {path: 'account/:id', component: <AccountPage />},

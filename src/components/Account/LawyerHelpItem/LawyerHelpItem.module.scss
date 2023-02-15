@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .lawyerHelpItem {
     border-radius: 20px;
     background-color: #fff;
@@ -12,7 +14,7 @@
             width: 100%;
         }
         .lawyerHelpHeader__text {
-            color: #003878;
+            color: $main-color;
         }
     }
 

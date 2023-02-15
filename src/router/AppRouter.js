@@ -3,7 +3,7 @@ import {Routes, Route, Navigate} from "react-router-dom";
 import {observer} from "mobx-react-lite"
 import AuthLayout from "../components/Layout/AuthLayout/AuthLayout";
 import AccountLayout from "../components/Layout/AccountLayout/AccountLayout";
-import LoginPage from "../pages/LoginPage/LoginPage";
+import LoginPage from "../pages/auth/LoginPage/LoginPage";
 import { privateRoutes, publicRoutes } from "./index";
 import { useContext } from "react";
 import { Context } from "..";

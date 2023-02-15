@@ -21,8 +21,6 @@ const LawyerHelpItem = () => {
         errors
     } = useLawyerHelpItem();
 
-    console.log(toJS(lawyer.lawyerHelp?.answers));
-
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelpItem}>
             <header className={classNames(styles.lawyerHelpHeader, {

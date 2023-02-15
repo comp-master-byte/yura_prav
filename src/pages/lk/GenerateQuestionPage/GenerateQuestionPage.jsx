@@ -1,7 +1,7 @@
 import React from "react";
 import { useGenerateQuestion } from "../../../hooks/lk/useGenerateQuestion";
 import styles from "./GenerateQuestionPage.module.scss";
-import UIInput from "../../../UI/UIInput";
+import UIInput from "../../../UI/UIInput/UIInput";
 import UIButton from "../../../UI/UIButton/UIButton"
 import classNames from "classnames";
 import { ToastContainer } from "react-toastify";
