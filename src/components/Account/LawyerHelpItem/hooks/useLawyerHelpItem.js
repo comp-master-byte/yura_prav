@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 export const useLawyerHelpItem = () => {
     const {lawyer} = useContext(Context);
-    const {register, reset, handleSubmit} = useForm();
+    const {register, reset, handleSubmit, formState: {errors}} = useForm();
     const navigate = useNavigate();
     const {id} = useParams();
     const location = useLocation();
@@ -77,6 +77,7 @@ export const useLawyerHelpItem = () => {
         handleSubmit,
         onSubmit,
         toggleAnswersDisabled,
-        isAnswersDisabled
+        isAnswersDisabled,
+        errors
     }
 }

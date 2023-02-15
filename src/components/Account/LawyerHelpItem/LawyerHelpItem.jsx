@@ -6,6 +6,7 @@ import UIButton from '../../../UI/UIButton/UIButton';
 import AddLawyerItemButton from '../AddLawyerItemButton/AddLawyerItemButton';
 import UIOutlinedInput from '../../../UI/UIOutlinedInput/UIOutlinedInput';
 import { useLawyerHelpItem } from './hooks/useLawyerHelpItem';
+import { toJS } from 'mobx';
 
 const LawyerHelpItem = () => {
     const {
@@ -16,8 +17,11 @@ const LawyerHelpItem = () => {
         handleSubmit, 
         onSubmit, 
         isAnswersDisabled, 
-        toggleAnswersDisabled
+        toggleAnswersDisabled,
+        errors
     } = useLawyerHelpItem();
+
+    console.log(toJS(lawyer.lawyerHelp?.answers));
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.lawyerHelpItem}>
@@ -28,6 +32,10 @@ const LawyerHelpItem = () => {
                     name="title"
                     register={register}
                     disabled={isAnswersDisabled}
+                    error={errors?.title}
+                    validation={{
+                        required: 'Данное поле не может быть пустым'
+                    }}
                     disabledText
                 />
             </header>
@@ -41,6 +49,10 @@ const LawyerHelpItem = () => {
                                 name={answer[0]}
                                 register={register}
                                 disabled={isAnswersDisabled}
+                                error={errors[answer[0]]}
+                                validation={{
+                                    required: 'Данное поле не может быть пустым'
+                                }}
                             />
                         </div>
                 )}
