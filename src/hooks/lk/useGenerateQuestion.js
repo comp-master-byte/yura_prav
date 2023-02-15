@@ -38,10 +38,9 @@ export const useGenerateQuestion = () => {
     }
 
     const onSubmit = (data) => {
-        const answers = [];
-        answersList.forEach((item) => {
-            answers.push(item.name);
-        })
+        const dataWithoutMessage = {...data};
+        delete dataWithoutMessage.message;
+        const answers = Object.values(dataWithoutMessage);
 
         const submitData = {
             message: data.message,
@@ -49,8 +48,8 @@ export const useGenerateQuestion = () => {
             answers: selectQuestionOrAnswer === 'q' ? answers : '',
             previous_answer: location.state
         }
-    
         lawyer.createLawyerQuestion(2, submitData);
+
         // очистка полей после отправки сообщения
         setSelectQuestionOrAnswer([]);
         setSelectQuestionOrAnswer('a');
