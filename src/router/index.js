@@ -1,7 +1,7 @@
-import AccountPage from "../pages/lk/AccountPage/AccountPage";
-import GenerateQuestionPage from "../pages/lk/GenerateQuestionPage/GenerateQuestionPage";
+import AccountPage from "../pages/PersonalAccount/AccountPage/AccountPage";
+import GenerateQuestionPage from "../pages/PersonalAccount/GenerateQuestionPage/GenerateQuestionPage";
 import SignUpPage from "../pages/auth/SignUpPage/SignUpPage";
-import EditPage from "../pages/lk/EditPage/EditPage";
+import EditPage from "../pages/PersonalAccount/EditPage/EditPage";
 
 export const privateRoutes = [
   { path: "account/:id", component: <AccountPage /> },
