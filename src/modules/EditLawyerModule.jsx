@@ -5,8 +5,15 @@ import UIOutlinedInput from "../UI/UIOutlinedInput/UIOutlinedInput";
 import UIButton from "../UI/UIButton/UIButton";
 
 const EditLawyerModule = () => {
-  const { register, handleSubmit, errors, onSubmit, parsedLocationState } =
-    useEditLawyerModule();
+  const {
+    register,
+    handleSubmit,
+    errors,
+    onSubmit,
+    parsedLocationState,
+    goBackToAnswers,
+  } = useEditLawyerModule();
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <UIOutlinedInput
@@ -17,6 +24,7 @@ const EditLawyerModule = () => {
         validation={{
           required: "Поле обязательно к заполнению",
         }}
+        isAccessToDelete
       />
 
       <div className={styles.answersList}>
@@ -25,14 +33,16 @@ const EditLawyerModule = () => {
             key={index}
             register={register}
             name={answer[0]}
+            inputWrapperClassName={styles.answerItem}
             validation={{ required: "Поле обязательно к заполнению" }}
+            isAccessToDelete
           />
         ))}
       </div>
 
       <div className={styles.editButtons}>
         <UIButton>Сохранить изменения</UIButton>
-        <UIButton>Назад</UIButton>
+        <UIButton onClick={goBackToAnswers}>Назад</UIButton>
       </div>
     </form>
   );

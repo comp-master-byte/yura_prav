@@ -1,5 +1,7 @@
 import styles from "./UIOutlinedInput.module.scss";
 import classNames from "classnames";
+// import { UilTrashAlt } from "@iconscout/react-unicons";
+import { UilTimesCircle } from "@iconscout/react-unicons";
 
 const UIOutlinedInput = ({
   register,
@@ -10,12 +12,18 @@ const UIOutlinedInput = ({
   error,
   disabledText,
   inputClassName,
+  inputWrapperClassName,
+  isAccessToDelete,
 }) => {
   return (
     <div
-      className={classNames(styles.outlinedInputWrapper, {
-        [styles.errorOutlindeInputWrapper]: error?.message,
-      })}
+      className={classNames(
+        styles.outlinedInputWrapper,
+        inputWrapperClassName,
+        {
+          [styles.errorOutlindeInputWrapper]: error?.message,
+        }
+      )}
     >
       <input
         {...register(name, {
@@ -29,6 +37,11 @@ const UIOutlinedInput = ({
       />
       {error && (
         <div className={styles.outlinedInputError}>{error.message}</div>
+      )}
+      {isAccessToDelete && (
+        <div className={styles.deleteIcon}>
+          <UilTimesCircle />
+        </div>
       )}
     </div>
   );

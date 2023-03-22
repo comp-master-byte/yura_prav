@@ -1,13 +1,15 @@
-.message {
-  margin-bottom: 30px;
-}
-
 .answersList {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  justify-content: space-between;
+
+  .answerItem {
+    flex-grow: 1;
+  }
 }
 
 .editButtons {

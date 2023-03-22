@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { mergeObjectsInArr } from "../../utils/mergeObjectsInArr";
 import LawyerService from "../../services/LawyerService";
 import { toast } from "react-toastify";
 
 export const useEditLawyerModule = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [parsedLocationState, setParsedLocationState] = useState(null);
 
@@ -46,6 +47,11 @@ export const useEditLawyerModule = () => {
     });
   };
 
+  const goBackToAnswers = (e) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
   useEffect(() => {
     const parsedLocationState = JSON.parse(location.state);
     setParsedLocationState(parsedLocationState);
@@ -69,5 +75,6 @@ export const useEditLawyerModule = () => {
     errors,
     onSubmit,
     parsedLocationState,
+    goBackToAnswers,
   };
 };
