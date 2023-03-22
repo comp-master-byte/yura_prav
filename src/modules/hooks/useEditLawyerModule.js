@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { mergeObjectsInArr } from "../../utils/mergeObjectsInArr";
+import LawyerService from "../../services/LawyerService";
+import { toast } from "react-toastify";
 
 export const useEditLawyerModule = () => {
   const location = useLocation();
@@ -16,7 +18,32 @@ export const useEditLawyerModule = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    if ("title" in data) {
+      LawyerService.editLawyerMessage(parsedLocationState.lawyerHelp.node_id, {
+        new_message: data.title,
+      });
+    }
+    delete data.title;
+    const result = Object.entries(data).map((entry) => ({
+      [entry[0]]: entry[1],
+    }));
+    result.forEach(async (item) => {
+      const previous_answer = Object.keys(item);
+      const new_answer = Object.values(item);
+      if (previous_answer[0] !== new_answer[0]) {
+        await LawyerService.editLawyerAnswer(
+          parsedLocationState.lawyerHelp.node_id,
+          {
+            previous_answer: previous_answer[0],
+            new_answer: new_answer[0],
+          }
+        );
+      }
+    });
+    toast("Редактирование прошло успешно", {
+      type: "success",
+      position: "top-right",
+    });
   };
 
   useEffect(() => {
