@@ -47,6 +47,12 @@ export const useEditLawyerModule = () => {
     });
   };
 
+  const onDeleteAnswer = (name) => {
+    LawyerService.deleteLawyerAnswer(parsedLocationState.lawyerHelp.node_id, {
+      answer: name,
+    });
+  };
+
   const goBackToAnswers = (e) => {
     e.preventDefault();
     navigate(-1);
@@ -76,5 +82,6 @@ export const useEditLawyerModule = () => {
     onSubmit,
     parsedLocationState,
     goBackToAnswers,
+    onDeleteAnswer,
   };
 };
