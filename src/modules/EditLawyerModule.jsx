@@ -13,6 +13,7 @@ const EditLawyerModule = () => {
     parsedLocationState,
     goBackToAnswers,
     onDeleteAnswer,
+    onDeleteNode,
   } = useEditLawyerModule();
 
   return (
@@ -25,6 +26,8 @@ const EditLawyerModule = () => {
         validation={{
           required: "Поле обязательно к заполнению",
         }}
+        onDelete={onDeleteNode}
+        isAccessToDelete
       />
 
       <div className={styles.answersList}>

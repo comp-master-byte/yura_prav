@@ -36,7 +36,21 @@ export default class LawyerService {
 
   static async deleteLawyerAnswer(id, message) {
     try {
-      const response = await $api.delete(`/api/${id}/delete_answer`, message);
+      const response = await $api.delete(`/api/${id}/delete_answer`, {
+        answer: message,
+      });
+      return response.data;
+    } catch (e) {
+      toast(e.response.data, {
+        type: "error",
+        position: "top-right",
+      });
+    }
+  }
+
+  static async deleteLawyerNode(id) {
+    try {
+      const response = await $api.delete(`/api/${id}/delete_node`);
       return response.data;
     } catch (e) {
       toast(e.response.data, {
