@@ -4,13 +4,13 @@
   border-radius: 20px;
   background-color: #fff;
   filter: drop-shadow(0px 0px 3px #fff);
-  padding: 20px;
+  padding-right: 20px;
 
   .lawyerHelpHeader {
-    margin-bottom: 30px;
     color: $primary-color;
     font-weight: 700;
     font-size: 28px;
+    padding: 20px 20px 5px 20px;
 
     .lawyerHelpHeader__text {
       color: $primary-color;
@@ -24,7 +24,10 @@
     flex-wrap: wrap;
     width: 100%;
     gap: 20px;
-    margin-bottom: 20px;
+    padding: 20px;
+    max-height: 250px;
+    padding-top: 25px;
+    overflow-y: auto;
 
     .lawyerHelperAnswer {
       background-color: #fff;
@@ -44,13 +47,31 @@
       font-weight: 500;
 
       &:hover {
-        transform: translateY(-15px);
+        transform: translateY(-10px);
         transition: all 0.25s;
         filter: drop-shadow(0px 0px 8px #003878);
         background-color: #003878;
         color: #fff;
       }
     }
+  }
+
+  .lawyerHelperAnswers::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .lawyerHelperAnswers::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+  }
+
+  .lawyerHelperAnswers::-webkit-scrollbar-thumb {
+    background-color: #003878;
+    border-radius: 6px;
+  }
+
+  .lawyerHelpButtons {
+    padding: 20px;
   }
 
   .marginRigth {

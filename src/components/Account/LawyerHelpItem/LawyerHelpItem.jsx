@@ -40,23 +40,22 @@ const LawyerHelpItem = () => {
         )}
         <AddLawyerItemButton />
       </main>
-      {lawyer.lawyerHelp?.node_id !== 1 && (
+      <div className={styles.lawyerHelpButtons}>
+        {lawyer.lawyerHelp?.node_id !== 1 && (
+          <UIButton
+            customClassName={styles.marginRigth}
+            onClick={(e) => goBack(e)}
+          >
+            Назад
+          </UIButton>
+        )}
         <UIButton
           customClassName={styles.marginRigth}
-          onClick={(e) => goBack(e)}
+          onClick={(event) => toEditLawyerPage(event)}
         >
-          Назад
+          Редактировать
         </UIButton>
-      )}
-      <UIButton
-        customClassName={styles.marginRigth}
-        onClick={(event) => toEditLawyerPage(event)}
-      >
-        Редактировать
-      </UIButton>
-      {!isAnswersDisabled && (
-        <UIButton type="submit">Сохранить изменения</UIButton>
-      )}
+      </div>
     </div>
   );
 };
