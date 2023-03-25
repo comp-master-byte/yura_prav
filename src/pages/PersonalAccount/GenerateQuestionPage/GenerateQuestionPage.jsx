@@ -1,5 +1,5 @@
 import React from "react";
-import { useGenerateQuestion } from "../../../hooks/lk/useGenerateQuestion";
+import { useGenerateQuestion } from "../../../hooks/personalAccount/useGenerateQuestion";
 import styles from "./GenerateQuestionPage.module.scss";
 import UIInput from "../../../UI/UIInput/UIInput";
 import UIButton from "../../../UI/UIButton/UIButton";

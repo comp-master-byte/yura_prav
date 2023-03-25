@@ -3,7 +3,7 @@ import styles from "./AccountLayout.module.scss";
 import { Outlet } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
-import { useAccountLayout } from "../../../hooks/lk/useAccountLayout";
+import { useAccountLayout } from "../../../hooks/personalAccount/useAccountLayout";
 
 const AccountLayout = () => {
   const { logoutFromAccount, store } = useAccountLayout();

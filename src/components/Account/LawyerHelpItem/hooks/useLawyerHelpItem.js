@@ -44,7 +44,7 @@ export const useLawyerHelpItem = () => {
 
   const onSelectAnswer = (answer) => {
     if (answer[1] === 101) {
-      navigate("/lk/generate-question", {
+      navigate("/personalAccount/generate-question", {
         state: { id: location.state.id, data: location.state.data },
       });
       const stack = JSON.parse(localStorage.getItem("nodeIdStack"));
@@ -53,7 +53,9 @@ export const useLawyerHelpItem = () => {
       localStorage.setItem("nodeIdStack", toStringStack);
     } else {
       lawyer.getSelectedLawyerHelp(answer[1]);
-      navigate(`/lk/account/${answer[1]}`, { state: { id, data: answer[0] } });
+      navigate(`/personalAccount/account/${answer[1]}`, {
+        state: { id, data: answer[0] },
+      });
     }
   };
 
@@ -65,7 +67,9 @@ export const useLawyerHelpItem = () => {
 
   const toEditLawyerPage = (event) => {
     event.preventDefault();
-    navigate(`/lk/account/${id}/edit`, { state: JSON.stringify(lawyer) });
+    navigate(`/personalAccount/account/${id}/edit`, {
+      state: JSON.stringify(lawyer),
+    });
   };
 
   useEffect(() => {
