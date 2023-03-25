@@ -17,44 +17,46 @@ const LawyerHelpItem = () => {
 
   return (
     <div className={styles.lawyerHelpItem}>
-      <header
-        className={classNames(styles.lawyerHelpHeader, {
-          [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length,
-        })}
-      >
-        {lawyer.lawyerHelp?.message}
-      </header>
-      <main className={styles.lawyerHelperAnswers}>
-        {lawyer.lawyerHelp?.answers?.map((answer, index) =>
-          parseInt(answer[0]) === 1000 ? (
-            <React.Fragment key={index}></React.Fragment>
-          ) : (
-            <div
-              onClick={() => isAnswersDisabled && onSelectAnswer(answer)}
-              key={index}
-              className={styles.lawyerHelperAnswer}
+      <div className={styles.scrollbar}>
+        <header
+          className={classNames(styles.lawyerHelpHeader, {
+            [styles.withoutMarginBottom]: !lawyer.lawyerHelp?.answers?.length,
+          })}
+        >
+          {lawyer.lawyerHelp?.message}
+        </header>
+        <main className={styles.lawyerHelperAnswers}>
+          {lawyer.lawyerHelp?.answers?.map((answer, index) =>
+            parseInt(answer[0]) === 1000 ? (
+              <React.Fragment key={index}></React.Fragment>
+            ) : (
+              <div
+                onClick={() => isAnswersDisabled && onSelectAnswer(answer)}
+                key={index}
+                className={styles.lawyerHelperAnswer}
+              >
+                {answer[0]}
+              </div>
+            )
+          )}
+          <AddLawyerItemButton />
+        </main>
+        <div className={styles.lawyerHelpButtons}>
+          {lawyer.lawyerHelp?.node_id !== 1 && (
+            <UIButton
+              customClassName={styles.marginRigth}
+              onClick={(e) => goBack(e)}
             >
-              {answer[0]}
-            </div>
-          )
-        )}
-        <AddLawyerItemButton />
-      </main>
-      <div className={styles.lawyerHelpButtons}>
-        {lawyer.lawyerHelp?.node_id !== 1 && (
+              Назад
+            </UIButton>
+          )}
           <UIButton
             customClassName={styles.marginRigth}
-            onClick={(e) => goBack(e)}
+            onClick={(event) => toEditLawyerPage(event)}
           >
-            Назад
+            Редактировать
           </UIButton>
-        )}
-        <UIButton
-          customClassName={styles.marginRigth}
-          onClick={(event) => toEditLawyerPage(event)}
-        >
-          Редактировать
-        </UIButton>
+        </div>
       </div>
     </div>
   );

@@ -4,16 +4,19 @@
   border-radius: 20px;
   background-color: #fff;
   filter: drop-shadow(0px 0px 3px #fff);
-  padding-right: 20px;
-  padding-top: 20px;
+  padding: 20px 20px 20px 0;
+
+  .scrollbar {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 
   .lawyerHelpHeader {
     color: $primary-color;
     font-weight: 700;
     font-size: 28px;
     padding: 0px 20px 5px 20px;
-    max-height: 250px;
-    overflow-y: auto;
 
     .lawyerHelpHeader__text {
       color: $primary-color;
@@ -28,9 +31,7 @@
     width: 100%;
     gap: 20px;
     padding: 20px;
-    max-height: 250px;
     padding-top: 25px;
-    overflow-y: auto;
 
     .lawyerHelperAnswer {
       background-color: #fff;
@@ -60,7 +61,7 @@
   }
 
   .lawyerHelpButtons {
-    padding: 20px;
+    padding: 20px 20px 0 20px;
   }
 
   .marginRigth {

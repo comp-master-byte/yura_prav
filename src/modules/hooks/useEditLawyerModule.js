@@ -48,9 +48,12 @@ export const useEditLawyerModule = () => {
   };
 
   const onDeleteAnswer = (name) => {
+    const deleteAnswer = {
+      answer: name,
+    };
     LawyerService.deleteLawyerAnswer(
       parsedLocationState.lawyerHelp.node_id,
-      name
+      deleteAnswer
     );
   };
 
