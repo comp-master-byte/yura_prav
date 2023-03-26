@@ -18,17 +18,19 @@ const EditLawyerModule = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <UIOutlinedInput
-        register={register}
-        name="title"
-        error={errors.title}
-        inputClassName={styles.message}
-        validation={{
-          required: "Поле обязательно к заполнению",
-        }}
-        onDelete={onDeleteNode}
-        isAccessToDelete
-      />
+      {parsedLocationState?.lawyerHelp.message && (
+        <UIOutlinedInput
+          register={register}
+          name="title"
+          error={errors.title}
+          inputClassName={styles.message}
+          validation={{
+            required: "Поле обязательно к заполнению",
+          }}
+          onDelete={onDeleteNode}
+          isAccessToDelete
+        />
+      )}
 
       <div className={styles.answersList}>
         {parsedLocationState?.lawyerHelp.answers.map((answer, index) => (

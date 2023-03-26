@@ -69,8 +69,16 @@ export const useEditLawyerModule = () => {
     }
   };
 
-  const onDeleteNode = () => {
-    LawyerService.deleteLawyerNode(parsedLocationState.lawyerHelp.node_id);
+  const onDeleteNode = async () => {
+    const status = await LawyerService.deleteLawyerNode(
+      parsedLocationState.lawyerHelp.node_id
+    );
+
+    if (status === 200) {
+      const parsedStateCopy = JSON.parse(JSON.stringify(parsedLocationState));
+      delete parsedStateCopy.lawyerHelp.message;
+      setParsedLocationState(parsedStateCopy);
+    }
   };
 
   const goBackToAnswers = (e) => {
