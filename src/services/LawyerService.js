@@ -37,6 +37,11 @@ export default class LawyerService {
   static async deleteLawyerAnswer(id, message) {
     try {
       const response = await $api.post(`/api/${id}/delete_answer`, message);
+      toast("Ребро успешно удалено", {
+        type: "success",
+        position: "top-right",
+      });
+      return response.status;
     } catch (e) {
       toast(e.response.data, {
         type: "error",

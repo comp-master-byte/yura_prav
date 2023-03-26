@@ -49,13 +49,24 @@ export const useEditLawyerModule = () => {
   };
 
   const onDeleteAnswer = async (name) => {
-    const deleteAnswer = {
-      answer: name,
-    };
-    await LawyerService.deleteLawyerAnswer(
+    const status = await LawyerService.deleteLawyerAnswer(
       parsedLocationState.lawyerHelp.node_id,
-      deleteAnswer
+      {
+        answer: name,
+      }
     );
+
+    if (status === 200) {
+      setParsedLocationState({
+        ...parsedLocationState,
+        lawyerHelp: {
+          ...parsedLocationState.lawyerHelp,
+          answers: parsedLocationState.lawyerHelp.answers.filter(
+            (answer) => answer[0] !== name
+          ),
+        },
+      });
+    }
   };
 
   const onDeleteNode = () => {
