@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { mergeObjectsInArr } from "../../utils/mergeObjectsInArr";
 import LawyerService from "../../services/LawyerService";
 import { toast } from "react-toastify";
+import $api from "../../http";
 
 export const useEditLawyerModule = () => {
   const location = useLocation();
@@ -47,11 +48,11 @@ export const useEditLawyerModule = () => {
     });
   };
 
-  const onDeleteAnswer = (name) => {
+  const onDeleteAnswer = async (name) => {
     const deleteAnswer = {
       answer: name,
     };
-    LawyerService.deleteLawyerAnswer(
+    await LawyerService.deleteLawyerAnswer(
       parsedLocationState.lawyerHelp.node_id,
       deleteAnswer
     );

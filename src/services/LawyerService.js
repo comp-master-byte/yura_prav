@@ -36,7 +36,7 @@ export default class LawyerService {
 
   static async deleteLawyerAnswer(id, message) {
     try {
-      return $api.delete(`/api/${id}/delete_answer`, message);
+      const response = await $api.post(`/api/${id}/delete_answer`, message);
     } catch (e) {
       toast(e.response.data, {
         type: "error",
@@ -47,7 +47,7 @@ export default class LawyerService {
 
   static async deleteLawyerNode(id) {
     try {
-      const response = await $api.delete(`/api/${id}/delete_node`);
+      const response = await $api.post(`/api/${id}/delete_node`);
       return response.data;
     } catch (e) {
       toast(e.response.data, {
