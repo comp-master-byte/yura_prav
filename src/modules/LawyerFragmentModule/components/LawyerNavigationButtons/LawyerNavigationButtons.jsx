@@ -13,12 +13,15 @@ const LawyerNavigationButtons = ({ nodeId, goBack, toEditLawyerPage }) => {
           Назад
         </UIButton>
       )}
-      <UIButton
-        customClassName={styles.marginRigth}
-        onClick={(event) => toEditLawyerPage(event)}
-      >
-        Редактировать
-      </UIButton>
+
+      {nodeId !== 100 && (
+        <UIButton
+          customClassName={styles.marginRigth}
+          onClick={(event) => toEditLawyerPage(event)}
+        >
+          Редактировать
+        </UIButton>
+      )}
     </div>
   );
 };
