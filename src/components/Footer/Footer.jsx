@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerInner}>
-          <p>Юра.Прав</p>
+          <p>Юра Прав.</p>
           <p>Разработано в 2023 году, г.Санкт-Петербург</p>
         </div>
       </div>
