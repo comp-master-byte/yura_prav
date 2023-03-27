@@ -1,6 +1,6 @@
 import AccountPage from "../pages/PersonalAccount/AccountPage/AccountPage";
 import GenerateQuestionPage from "../pages/PersonalAccount/GenerateQuestionPage/GenerateQuestionPage";
-import SignUpPage from "../pages/auth/SignUpPage/SignUpPage";
+import SignUpPage from "../pages/Auth/SignUpPage/SignUpPage";
 import EditPage from "../pages/PersonalAccount/EditPage/EditPage";
 
 export const privateRoutes = [

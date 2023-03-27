@@ -3,3 +3,20 @@
   margin: 0 auto;
   width: 100%;
 }
+
+@mixin auth-title {
+  font-size: 27px;
+  font-weight: 600;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: $primary-color;
+    border-radius: 25px;
+  }
+}
