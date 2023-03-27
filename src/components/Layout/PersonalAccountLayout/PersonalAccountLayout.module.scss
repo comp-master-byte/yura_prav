@@ -1,11 +1,14 @@
 .accountWrapper {
   background-color: #003878;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   .innerAccount {
     padding-top: 30px;
     max-width: 70%;
     margin: 0 auto;
+    flex-grow: 1;
 
     .accountHeader {
       display: flex;

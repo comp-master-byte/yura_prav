@@ -1,0 +1,21 @@
+@import "../../styles/exports";
+
+.footer {
+  border-top: 1px solid $ordinary-color-opacity;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.container {
+  @include container;
+}
+
+.footerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 5px;
+}

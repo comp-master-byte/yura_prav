@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Outlet } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { useAccountLayout } from "../../../hooks/personalAccount/useAccountLayout";
+import Footer from "../../Footer/Footer";
 
 const PersonalAccountLayout = () => {
   const { logoutFromAccount, store } = useAccountLayout();
@@ -31,6 +32,7 @@ const PersonalAccountLayout = () => {
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 };
