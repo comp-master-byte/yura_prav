@@ -1,5 +1,6 @@
 {
   "name": "yura_prav",
+  "author": "Karen Akopyan",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

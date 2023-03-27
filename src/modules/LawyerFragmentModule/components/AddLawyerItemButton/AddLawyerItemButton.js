@@ -1,4 +1,4 @@
-import UIOutlinedInputNotRegister from "../../../UI/UIOutlinedInput/UIOutlinedInputNotRegister";
+import UIOutlinedInputNotRegister from "../../../../UI/UIOutlinedInput/UIOutlinedInputNotRegister";
 import styles from "./AddLawyerItemButton.module.scss";
 import { useAddLawyerItemButton } from "./hooks/useAddLawyerItemButton";
 import { UilTrashAlt } from "@iconscout/react-unicons";

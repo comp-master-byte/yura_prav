@@ -1,11 +1,12 @@
 import React from "react";
-import styles from "./AccountLayout.module.scss";
+import styles from "./PersonalAccountLayout.module.scss";
+import classNames from "classnames";
+import logo from "./public/logo.svg";
 import { Outlet } from "react-router-dom";
 import { observer } from "mobx-react-lite";
-import classNames from "classnames";
 import { useAccountLayout } from "../../../hooks/personalAccount/useAccountLayout";
 
-const AccountLayout = () => {
+const PersonalAccountLayout = () => {
   const { logoutFromAccount, store } = useAccountLayout();
 
   return (
@@ -35,4 +36,4 @@ const AccountLayout = () => {
   );
 };
 
-export default observer(AccountLayout);
+export default observer(PersonalAccountLayout);

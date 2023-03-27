@@ -11,6 +11,11 @@
       display: flex;
       justify-content: flex-end;
 
+      &__logo {
+        background-color: #fff;
+        border-radius: 15px;
+      }
+
       .headerInfo {
         display: flex;
         align-items: center;

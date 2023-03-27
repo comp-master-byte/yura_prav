@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
-import { mergeObjectsInArr } from "../../utils/mergeObjectsInArr";
-import LawyerService from "../../services/LawyerService";
+import { mergeObjectsInArr } from "../../../utils/mergeObjectsInArr";
+import LawyerService from "../../../services/LawyerService";
 import { toast } from "react-toastify";
 
 export const useEditLawyerModule = () => {

@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import LawyerHelpItem from "../../../components/Account/LawyerHelpItem/LawyerHelpItem";
+import LawyerFragmentModule from "../../../modules/LawyerFragmentModule/LawyerFragmentModule";
 import styles from "./AccountPage.module.scss";
 
 const AccountPage = () => {
   return (
     <div className={styles.accountPage}>
-      <LawyerHelpItem />
+      <LawyerFragmentModule />
     </div>
   );
 };

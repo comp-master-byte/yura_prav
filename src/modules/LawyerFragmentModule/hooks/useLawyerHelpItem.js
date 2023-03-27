@@ -1,7 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../../../..";
-import LawyerService from "../../../../services/LawyerService";
+import { Context } from "../../..";
+import LawyerService from "../../../services/LawyerService";
 import { toast } from "react-toastify";
 
 export const useLawyerHelpItem = () => {

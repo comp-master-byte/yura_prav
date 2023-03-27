@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./EditLawyerModule.module.scss";
 import { useEditLawyerModule } from "./hooks/useEditLawyerModule";
-import UIOutlinedInput from "../UI/UIOutlinedInput/UIOutlinedInput";
-import UIButton from "../UI/UIButton/UIButton";
+import UIOutlinedInput from "../../UI/UIOutlinedInput/UIOutlinedInput";
+import UIButton from "../../UI/UIButton/UIButton";
 
 const EditLawyerModule = () => {
   const {

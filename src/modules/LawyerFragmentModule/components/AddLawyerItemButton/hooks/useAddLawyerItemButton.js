@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import LawyerService from "../../../../services/LawyerService";
-import { Context } from "../../../../index";
+import LawyerService from "../../../../../services/LawyerService";
+import { Context } from "../../../../../index";
 
 export const useAddLawyerItemButton = () => {
   const { id } = useParams();

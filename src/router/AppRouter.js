@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import AuthLayout from "../components/Layout/AuthLayout/AuthLayout";
-import AccountLayout from "../components/Layout/AccountLayout/AccountLayout";
+import PersonalAccountLayout from "../components/Layout/PersonalAccountLayout/PersonalAccountLayout";
 import LoginPage from "../pages/auth/LoginPage/LoginPage";
 import { privateRoutes, publicRoutes } from "./index";
 import { useContext } from "react";
@@ -14,7 +14,7 @@ const AppRouter = () => {
     <Routes>
       {" "}
       {/*Тут только те роуты, где пользователь авторизован*/}
-      <Route path="/personalAccount/" element={<AccountLayout />}>
+      <Route path="/personalAccount/" element={<PersonalAccountLayout />}>
         {privateRoutes.map((route) => (
           <Route key={route.path} path={route.path} element={route.component} />
         ))}

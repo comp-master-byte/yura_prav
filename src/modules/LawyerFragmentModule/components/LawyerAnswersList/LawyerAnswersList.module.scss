@@ -1,0 +1,36 @@
+.lawyerHelperAnswers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
+  padding-top: 25px;
+
+  .lawyerHelperAnswer {
+    background-color: #fff;
+    flex: 1 0 auto;
+    filter: drop-shadow(0px 0px 3px #003878);
+    color: #003878;
+    box-shadow: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    height: 64px;
+    border-radius: 10px;
+    padding: 0 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+
+    &:hover {
+      transform: translateY(-10px);
+      transition: all 0.25s;
+      filter: drop-shadow(0px 0px 8px #003878);
+      background-color: #003878;
+      color: #fff;
+    }
+  }
+}
