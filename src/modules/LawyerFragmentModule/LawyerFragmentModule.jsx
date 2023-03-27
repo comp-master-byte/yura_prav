@@ -11,8 +11,8 @@ const LawyerFragmentModule = () => {
     lawyer,
     onSelectAnswer,
     goBack,
-    isAnswersDisabled,
     toEditLawyerPage,
+    returnToFirstAnswer,
   } = useLawyerHelpItem();
 
   return (
@@ -24,8 +24,8 @@ const LawyerFragmentModule = () => {
         />
         <LawyerAnswersList
           lawyerAnswers={lawyer.lawyerHelp?.answers}
-          isAnswersDisabled={isAnswersDisabled}
           onSelectAnswer={onSelectAnswer}
+          returnToFirstAnswer={returnToFirstAnswer}
         />
         <LawyerNavigationButtons
           nodeId={lawyer.lawyerHelp?.node_id}
