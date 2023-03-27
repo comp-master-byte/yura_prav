@@ -25,7 +25,7 @@ const UIOutlinedInput = ({
         }
       )}
     >
-      <input
+      <textarea
         {...register(name, {
           ...validation,
         })}
