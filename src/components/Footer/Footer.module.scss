@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   color: #fff;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 .container {
@@ -18,4 +18,8 @@
   justify-content: center;
   flex-direction: column;
   row-gap: 5px;
+
+  p {
+    font-size: 14px;
+  }
 }
