@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./PersonalAccountLayout.module.scss";
 import classNames from "classnames";
-import logo from "./public/logo.svg";
 import { Outlet } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { useAccountLayout } from "../../../hooks/personalAccount/useAccountLayout";

@@ -6,8 +6,12 @@
   font-size: 28px;
   padding: 0px 20px 5px 20px;
   white-space: pre-wrap;
+  display: flex;
+  align-items: center;
 
-  .lawyerHelpHeader__text {
-    color: $primary-color;
+  &__img {
+    width: 80px;
+    height: auto;
+    margin-right: 20px;
   }
 }
