@@ -8,6 +8,7 @@ export const useLawyerHelpItem = () => {
   const { id } = useParams();
   const location = useLocation();
 
+  // Функция для выбора ответа
   const onSelectAnswer = (answer) => {
     if (answer[1] === 101) {
       navigate("/personalAccount/generate-question", {
@@ -50,6 +51,11 @@ export const useLawyerHelpItem = () => {
       });
     }
   }, [lawyer.lawyerHelp]);
+
+  useEffect(() => {
+    const nodeIdStack = localStorage.getItem("nodeIdStack");
+    if (!nodeIdStack) lawyer.getSelectedLawyerHelp();
+  }, []);
 
   return {
     onSelectAnswer,

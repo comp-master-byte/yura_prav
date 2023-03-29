@@ -1,31 +1,17 @@
-import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
-import { Context } from "../.."
+import { useContext, useEffect } from "react";
+import { Context } from "../..";
 
 export const useAccountLayout = () => {
-    const {store, lawyer} = useContext(Context);
+  const { store } = useContext(Context);
 
-    const navigate = useNavigate();
+  const logoutFromAccount = () => store.logout();
 
-    const to = () => navigate('/');
+  useEffect(() => {
+    store.checkUser();
+  }, []);
 
-    const logoutFromAccount = () => {
-        store.logout();
-    }
-
-    const getAllNecessaryData = () => {
-        lawyer.getSelectedLawyerHelp();
-        store.checkUser();
-    }
-
-    useEffect(() => {
-        if(store.isAuth) {
-            getAllNecessaryData();
-        }
-    }, [store.isAuth])
-
-    return {
-        logoutFromAccount,
-        store
-    }
-}
+  return {
+    logoutFromAccount,
+    store,
+  };
+};
